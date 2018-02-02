@@ -6,7 +6,7 @@ const app = express()
 const port = 3001
 app.set('trust proxy', '127.0.0.1')
 
-mongoose.connect('mongodb://localhost/__YOUR_DB__')
+mongoose.connect('mongodb://localhost/__CONSTRUCTION_DB__')
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
