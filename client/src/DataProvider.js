@@ -1,3 +1,4 @@
+
 import React, {Component} from 'react'
 import Layout from './components/structure/Layout'
 // import * as UserApi from './lib/userApi'
@@ -21,11 +22,24 @@ class DataProvider extends Component {
       })
     }
   }
-}
+
 
 componentDidMount () {
   this.methods.getAllProjects()
   
 }
 
-export default DataProvider
+  render () {
+    const domainData = {
+      ...this.state,
+      ...this.methods
+    }
+    return (
+      this.state.isLoaded 
+        ? <Layout domainData={domainData}/>
+        : <div>...Loading</div>
+    )
+  }
+}
+
+  export default DataProvider
