@@ -5,6 +5,7 @@ const app = express()
 
 const adminRoute = require('./routes/admins')
 const developerRoutes = require('./routes/developers')
+const projectRoutes = require('./routes/project')
 
 
 const port = 3001
@@ -16,6 +17,7 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(require('./config/error-handler'))
 app.use('/api/developers', developerRoutes)
+app.use('/api/projects', projectRoutes)
 
 app.use('/api/admins', adminRoute)
 

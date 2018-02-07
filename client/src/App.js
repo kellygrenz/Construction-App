@@ -1,3 +1,4 @@
+
 import React from 'react'
 // import Header from './components/structure/header/Header'
 import DataProvider from './DataProvider'
@@ -10,3 +11,4 @@ const App = () =>
     <DataProvider />
   </BrowserRouter>
 export default App
+
