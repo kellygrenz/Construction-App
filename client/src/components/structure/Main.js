@@ -9,8 +9,8 @@ import PropTypes from 'prop-types'
 const Main = ({domainData}) => {
   return (
     <Switch>
-      <Route path='/admin' render={() => <Admin />} />
       <Route path='/admin-sign-up' render={() => <AddAdminContainer domainData={domainData} />} />
+      <Route path='/admin' render={() => <Admin />} />
       <Route path='/login' render={() => <AdminContainer />} />
       <Route path='/' component={Home} />{/* Im not even being used right now */}
     </Switch>
