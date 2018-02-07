@@ -2,18 +2,18 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 const Developer = new Schema({
-  name: { type: String, required: true },
-  img: String,
-  weather: {type: String, required: true},
-  location: {type: String, required: true},
-  created: {type: Date, required: true}
+  developerFirstName: { type: String, required: true },
+  developerLastName: { type: String, required: true },
+  developerPassword: { type: String, required: true },
+  developerEmail: { type: String, required: true },
+  created: {type: Date, default: Date.now}
 })
 
 Developer.methods.setAdminData = function (requestBody) {
-  this.name = requestBody.name || this.name
-  this.img = requestBody.img || this.img
-  this.weather = requestBody.weather || this.weather
-  this.location = requestBody.location || this.location
+  this.developerFirstName = requestBody.developerFirstName || this.developerFirstName
+  this.developerLastName = requestBody.developerLastName || this.developerLastName
+  this.developerPassword = requestBody.developerPassword || this.developerPassword
+  this.developerEmail = requestBody.developerEmail || this.develpoerEmail
 }
 
 Developer.methods.setDate = function () {

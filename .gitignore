@@ -19,3 +19,5 @@ client/package-lock.json
 *.json
 *.json
 package.json
+*.json
+*.json
