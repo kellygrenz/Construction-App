@@ -63,5 +63,4 @@ Router.route('/:adminId')
       }
     })
   })
-
 module.exports = Router
