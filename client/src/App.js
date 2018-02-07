@@ -1,22 +1,14 @@
+
 import React from 'react'
+// import Header from './components/structure/header/Header'
 import DataProvider from './DataProvider'
-import {BrowserRouter} from 'react-router-dom'
-// import Header from './structure/header/Header'
 
-const App = () => 
-  
-<div> 
-  <h1>EZ BMP!!!  👊</h1>
-  <h2>This is the App</h2>
+import { BrowserRouter } from 'react-router-dom'
 
+const App = () =>
   <BrowserRouter>
+    {/* <Header /><DataProvider /> will here instead of <Header /> */}
     <DataProvider />
-</BrowserRouter>
-
-</div>
-
-
-
-
+  </BrowserRouter>
 export default App
 
