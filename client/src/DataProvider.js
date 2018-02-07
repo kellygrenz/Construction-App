@@ -25,13 +25,11 @@ export default class componentName extends Component {
         url: '/api/projects',
         method: 'GET'
       }).done((response) => {
-
         console.log(response, 'from getAllProjects()')
         this.setState({projects: response.projects, isLoaded: true})
       })
     }
   }
-
 
   componentDidMount () {
     this.methods.getAllProjects()
@@ -54,6 +52,3 @@ export default class componentName extends Component {
     )
   }
 }
-
-
-

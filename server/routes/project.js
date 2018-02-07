@@ -25,4 +25,4 @@ Router.route('/api/posts')
     })
   })
 
-  module.exports = Router
+module.exports = Router
