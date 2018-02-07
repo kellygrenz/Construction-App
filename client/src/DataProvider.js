@@ -1,3 +1,4 @@
+
 import React, { Component } from 'react'
 import $ from 'jquery'
 import Layout from './components/structure/Layout'
@@ -19,11 +20,13 @@ export default class componentName extends Component {
         this.setState({admin: response.admin, isLoaded: true})
       })
     },
+
     getAllProjects: () => {
       $.ajax({
         url: '/api/projects',
         method: 'GET'
       }).done((response) => {
+
         console.log(response, 'from getAllProjects()')
         this.setState({projects: response.projects, isLoaded: true})
       })
@@ -51,3 +54,6 @@ export default class componentName extends Component {
     )
   }
 }
+
+export default DataProvider
+

@@ -2,19 +2,22 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 const Project = new Schema({
-  newProject: [{type: mongoose.Schema.Types.ObjectId, ref: 'Product'}],
-  img: String,
-  user: {type: mongoose.Schema.Types.ObjectId, ref: 'User'}, // needs to be changed to interact with Developer and Admin
-  created: {type: Date, Default: Date.now}
+
+  name: { type: String, required: true},
+  developer: { type: String, required: true},
+  address: String,
+  created: { type: Date, required: true}
 })
+
+Project.methods.setProjectData = function (requestBody) {
+  this.name = requestBody.name || this.name
+  this.developer = requestBody.developer || this.developer
+  this.address = requestBody.address || this.address
+}
 
 Project.methods.setDate = function () {
   const dateNow = new Date()
   this.created = dateNow
-}
-
-Project.methods.setStatus = function (requestBody) {
-  this.status = requestBody.status || this.status
 }
 
 module.exports = mongoose.model('Project', Project)
