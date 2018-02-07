@@ -56,4 +56,4 @@ export default class componentName extends Component {
 }
 
 
-export default DataProvider
+
