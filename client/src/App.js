@@ -11,4 +11,3 @@ const App = () =>
     <DataProvider />
   </BrowserRouter>
 export default App
-

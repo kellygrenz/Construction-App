@@ -8,7 +8,7 @@ const Header = ({domainData}) => {
       <NavItem to='/'>Home</NavItem>
       <NavItem to='/admin'>Admin</NavItem>
       <NavItem to='/admin-sign-up'>Sign-up</NavItem>
-      <NavItem to='developer'>Developer</NavItem>
+      <NavItem to='/developer'>Developer</NavItem>
     </nav>
   )
 }

@@ -1,5 +1,3 @@
-
-
 import React, { Component } from 'react'
 import $ from 'jquery'
 import Layout from './components/structure/Layout'
@@ -59,5 +57,3 @@ export default class componentName extends Component {
 
 
 export default DataProvider
-
-
