@@ -51,7 +51,6 @@ Router.route('/:postId')
       } else {
         post.img = req.body.img ? req.body.img : post.img
         post.title = req.body.title ? req.body.title : post.title
-        
         post.notes = req.body.notes ? req.body.notes : post.notes
         post.save((err, updatedPost) => {
           if (err) {
