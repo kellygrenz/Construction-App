@@ -9,6 +9,8 @@ const Header = ({domainData}) => {
       <NavItem to='/admin'>Admin</NavItem>
       <NavItem to='/admin-sign-up'>Sign-up</NavItem>
       <NavItem to='/developer'>Developer</NavItem>
+      <NavItem to='/add-posts'>Add Post</NavItem>
+      <NavItem to='/posts'>Posts</NavItem>
     </nav>
   )
 }

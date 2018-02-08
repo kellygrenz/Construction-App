@@ -29,9 +29,9 @@ const AddAdminForm = ({id, onChangeHandler, addAdmin}) => {
         <h3>Email:</h3>
         <input type='text' onChange={onChangeHandler} placeholder='email' id='email' />
       </div>
-      {/* <div>
+      <button>
         <input type='text' onChange={onChangeHandler} placeholder='email' />
-      </div> */}
+      </button>
     </div>
   )
 }
