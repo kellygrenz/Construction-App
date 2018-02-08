@@ -15,6 +15,7 @@ mongoose.connect('mongodb://localhost/__CONSTRUCTION_DB__')
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(require('./config/error-handler'))
+
 app.use('/api/developers', developerRoutes)
 app.use('/api/projects', projectRoutes)
 app.use('/api/admins', adminRoute)
