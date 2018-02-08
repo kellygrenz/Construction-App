@@ -1,22 +1,20 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
-
-const mongoose = require('mongoose')
-const Schema = mongoose.Schema
-
 const Post = new Schema({
+  title: String,
   img: String,
-  weather: {type: String, required: true},
-  address: {type: String, required: true},
+  // weather: {type: String, required: true},
+  // address: {type: String, required: true},
   notes: String,
   created: {type: Date, required: true}
 })
 
-Post.methods.setPost = function (requestBody) {
+Post.methods.setPostData = function (requestBody) {
+  this.title = requestBody.title || this.title
   this.img = requestBody.img || this.img
-  this.weather = requestBody.weather || this.weather
-  this.address = requestBody.address || this.address
+  // this.weather = requestBody.weather || this.weather
+  // this.address = requestBody.address || this.address
   this.notes = requestBody.notes || this.notes
 }
 

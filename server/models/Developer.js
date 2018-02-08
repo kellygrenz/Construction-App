@@ -9,12 +9,11 @@ const Developer = new Schema({
   created: {type: Date, default: Date.now}
 })
 
-Developer.methods.setAdminData = function (requestBody) {
+Developer.methods.setDeveloperData = function (requestBody) {
   this.developerFirstName = requestBody.developerFirstName || this.developerFirstName
   this.developerLastName = requestBody.developerLastName || this.developerLastName
   this.developerEmail = requestBody.developerEmail || this.deveoperEmail
   this.developerPassword = requestBody.developerPassword || this.developerPassword
-  
 }
 
 Developer.methods.setDate = function () {

@@ -2,11 +2,11 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 const Project = new Schema({
-  projectName: { type: String, required: true},
-  projectDescription: { type: String, required: true},
-  developer: { type: String, required: true},
+  projectName: {type: String, required: true},
+  projectDescription: {type: String, required: true},
+  developer: {type: String, required: true},
   address: String,
-  created: { type: Date, required: true}
+  created: {type: Date, required: true}
 })
 
 Project.methods.setProjectData = function (requestBody) {
