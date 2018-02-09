@@ -21,6 +21,16 @@ export default class componentName extends Component {
       })
     },
 
+    getWeather: () => {
+      $.ajax({
+        url: 'http://api.wunderground.com/api/c675f48a3374f27d/conditions/q/MT/Bozeman.json',
+        method: 'POST'
+      }).done((response) => {
+        console.log(response, 'get weather');
+      })
+
+    },
+
     getAllProjects: () => {
       $.ajax({
         url: '/api/projects',
