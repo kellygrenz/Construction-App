@@ -2,25 +2,20 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 const Admin = new Schema({
-  firstName: {type: String, required: true},
-  lastName: {type: String, required: true},
-  password: {type: String, required: true},
-
-  email: {type: String, required: true},
-  password: {type: String, required: true},
-  project: {type: String, required: true},
-  // project: {type: Schema.Types.ObjectId, ref: 'Project'},
+  adminFirstName: {type: String, required: true},
+  adminLastName: {type: String, required: true},
+  adminPassword: {type: String, required: true},
+  adminEmail: {type: String, required: true},
+  adminProject: {type: String, required: true},
   created: {type: Date, required: true}
 })
 
 Admin.methods.setAdminData = function (requestBody) {
-  this.firstName = requestBody.firstName || this.firstName
-  this.lastName = requestBody.lastName || this.lastName
-  this.password = requestBody.password || this.password
-
-  this.email = requestBody.email || this.email
-  this.password = requestBody.password || this.password
-  this.project = requestBody.project || this.project
+  this.adminFirstName = requestBody.adminFirstName || this.adminFirstName
+  this.adminLastName = requestBody.adminLastName || this.adminLastName
+  this.adminPassword = requestBody.adminPassword || this.adminPassword
+  this.adminEmail = requestBody.adminEmail || this.adminEmail
+  this.adminProject = requestBody.adminProject || this.adminProject
 }
 
 Admin.methods.setDate = function () {
