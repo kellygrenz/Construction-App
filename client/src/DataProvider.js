@@ -23,12 +23,12 @@ export default class componentName extends Component {
 
     getWeather: () => {
       $.ajax({
-        url: 'http://api.wunderground.com/api/c675f48a3374f27d/conditions/q/MT/Bozeman.json',
+        url: 'http://api.wunderground.com/api/c675f48a3374f27d/geolookup/q/94107.json',
         method: 'POST'
       }).done((response) => {
-        console.log(response, 'get weather');
+        console.log(response, 'get weather')
+        this.setState({post: response.data, isLoaded: true})
       })
-
     },
 
     getAllProjects: () => {

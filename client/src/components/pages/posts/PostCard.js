@@ -6,13 +6,13 @@ const style = {
     border: '1px solid black'
   }
 }
-const PostCard = ({title, img, notes, current_observation}) => {
+const PostCard = ({title, img, notes, zip}) => {
   return (
     <div style={style.container}>
       {title}
       <img src={img} />
       {notes}
-      {current_observation.icon}
+      {zip}
     </div>
   )
 }

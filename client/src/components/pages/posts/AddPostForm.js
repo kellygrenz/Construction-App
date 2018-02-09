@@ -67,7 +67,7 @@ const style = {
   }
 }
 
-const AddPostForm = ({title, notes, img, onChangeHandler, submitPostToServer}) => {
+const AddPostForm = ({title, notes, img, onChangeHandler, submitPostToServer, zip}) => {
   return (
     
     <div style={style.container}>
@@ -84,6 +84,10 @@ const AddPostForm = ({title, notes, img, onChangeHandler, submitPostToServer}) =
         <h3 style={style.label}>Img:</h3>
         <input style={style.input} type='text' onChange={onChangeHandler} placeholder='image URL' id={'img'} />
       </div>
+      <div style={style.section}>
+        <h3 style={style.label}>Zip:</h3>
+        <input style={style.input} type='text' onChange={onChangeHandler} placeholder='Enter Zip' id={'zip'} />
+      </div>
       <button style={style.button} type='button' onClick={submitPostToServer}>Submit Post</button>
     </div>
   )
@@ -94,6 +98,7 @@ AddPostForm.propTypes = {
   title: PropTypes.string.isRequired,
   notes: PropTypes.string.isRequired,
   onChangeHandler: PropTypes.func.isRequired,
-  submitPostToServer: PropTypes.func.isRequired
+  submitPostToServer: PropTypes.func.isRequired,
+  zip: PropTypes.number.isRequired
 }
 export default AddPostForm

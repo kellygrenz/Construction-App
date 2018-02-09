@@ -4,8 +4,13 @@ const Schema = mongoose.Schema
 const Post = new Schema({
   title: String,
   img: String,
-  // weather: {type: String, required: true},
-  // address: {type: String, required: true},
+  // location: {
+  //   address: String,
+  //   state: String,
+  //   city: String,
+  //   zip: String
+  // },
+  zip: Number,
   notes: String,
   created: {type: Date, required: true}
 })
@@ -13,8 +18,7 @@ const Post = new Schema({
 Post.methods.setPostData = function (requestBody) {
   this.title = requestBody.title || this.title
   this.img = requestBody.img || this.img
-  // this.weather = requestBody.weather || this.weather
-  // this.address = requestBody.address || this.address
+  this.zip = requestBody.zip || this.zip
   this.notes = requestBody.notes || this.notes
 }
 
