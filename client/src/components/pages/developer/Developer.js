@@ -3,7 +3,7 @@ import React from 'react'
 const Developer = () => {
   return (
     <div>
-      Hello Developer
+      Developer
     </div>
   )
 }
