@@ -14,11 +14,9 @@ const PostCard = ({title, img, notes, zip}) => {
       {title}
       <img src={img} />
       {notes}
-// <<<<<<< test-for-passport
-//       {/* {current_observation.icon} */}
-// =======
-//       {zip}
-// >>>>>>> master
+      {/* {current_observation.icon} */}
+      {zip}
+
     </div>
   )
 }
