@@ -13,7 +13,7 @@ const style = {
   },
   headerImg: {
 
-    // marginRight: '50px'
+    marginRight: '250px'
 
   },
   userLinks: {
@@ -26,17 +26,19 @@ const style = {
 
 const Header = ({domainData}) => {
   return (
-    <nav style={style.container}>
-      <img src='images/logo.png' style={style.headerImg} />
-
-      <NavItem to='/'>Home</NavItem>
-      {/* <NavItem to='/about'>About</NavItem> */}
-      <NavItem to='/admin'>Admin</NavItem>
-      {/* <NavItem to='/admin-sign-up'>Sign-up</NavItem> */}
-      <NavItem to='/developer'>Developer</NavItem>
-      <NavItem to='/add-posts'>Add Post</NavItem>
-      <NavItem to='/posts'>Posts</NavItem>
-    </nav>
+    <div style={style.container}>
+      <div style={style.headerImg}>
+        <NavItem  to='/'><img src='images/logo.png'  /></NavItem>
+      </div>
+      <div>
+        
+        <NavItem to='/admin'>Admin</NavItem>
+        {/* <NavItem to='/admin-sign-up'>Sign-up</NavItem> */}
+        <NavItem to='/developer'>Developer</NavItem>
+        {/* <NavItem to='/add-posts'>Add Post</NavItem>
+        <NavItem to='/posts'>Posts</NavItem> */}
+      </div>
+    </div>
   )
 }
 

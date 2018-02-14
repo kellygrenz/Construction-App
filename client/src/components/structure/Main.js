@@ -22,7 +22,7 @@ const Main = ({domainData}) => {
       <Route path='/about' component={About} />
       <Route path='/admin-login' render={() => <AdminLoginContainer domainData={domainData} />} />
       <Route path='/admin-sign-up' render={() => <AdminSignUpContainer domainData={domainData} />} />
-      <Route path='/admin' render={() => <Admin />} />{/* I'm admin's home and empty */}
+      <Route path='/admin' render={() => <Admin domainData={domainData}/>} />{/* I'm admin's home and empty */}
       <Route path='/add-posts' render={() => <AddPostContainer domainData={domainData} />} />
       <Route path='/posts' render={() => <PostContainer domainData={domainData} />} />
 

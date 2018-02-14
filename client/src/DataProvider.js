@@ -22,17 +22,17 @@ export default class componentName extends Component {
         this.setState({admin: response.admin, isLoaded: true})
       })
     },
-    getWeather: () => { // we need to figure this out
-      $.ajax({
-        url: 'http://api.wunderground.com/api/c675f48a3374f27d/geolookup/q/94107.json',
-        method: 'POST'
-      }).done((response) => {
-        console.log(response, 'get weather')
+    // getWeather: () => { // we need to figure this out
+    //   $.ajax({
+    //     url: 'http://api.wunderground.com/api/c675f48a3374f27d/geolookup/q/94107.json',
+    //     method: 'POST'
+    //   }).done((response) => {
+    //     console.log(response, 'get weather')
 
-        this.setState({post: response.data, isLoaded: true})
+    //     this.setState({post: response.data, isLoaded: true})
 
-      })
-    },
+    //   })
+    // },
     getAllProjects: () => { // not used yet
       $.ajax({
         url: '/api/projects',
