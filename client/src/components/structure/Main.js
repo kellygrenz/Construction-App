@@ -8,7 +8,6 @@ import Admin from '../pages/admin/Admin'
 import AdminLoginContainer from '../pages/authentication/AdminLoginContainer'
 import AdminSignUpContainer from '../pages/authentication/AdminSignUpContainer'
 
-
 import Developer from '../pages/developer/Developer'
 
 import AddPostContainer from '../pages/posts/AddPostContainer'
@@ -22,12 +21,12 @@ const Main = ({domainData}) => {
       <Route path='/about' component={About} />
       <Route path='/admin-login' render={() => <AdminLoginContainer domainData={domainData} />} />
       <Route path='/admin-sign-up' render={() => <AdminSignUpContainer domainData={domainData} />} />
-      <Route path='/admin' render={() => <Admin domainData={domainData}/>} />{/* I'm admin's home and empty */}
+      <Route path='/admin' render={() => <Admin domainData={domainData} />} />{/* I'm admin's home and empty */}
       <Route path='/add-posts' render={() => <AddPostContainer domainData={domainData} />} />
       <Route path='/posts' render={() => <PostContainer domainData={domainData} />} />
-
-      <Route path='/developer' render={() => <Developer />} />
-
+      <Route path='/developer' render={() => <Developer domainData={domainData} />} />
+      {/* <Route path='/developer-login' render={() => <DeveloperLoginContainer domainData={domainData} />} />
+      <Route path='/developer-sign-up' render={() => <DeveloperSignUpContainer domainData={domainData} />} /> */}
       <Route path='/' component={Home} />{/* Im not even being used right now */}
     </Switch>
 
