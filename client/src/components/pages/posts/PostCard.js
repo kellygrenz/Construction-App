@@ -6,13 +6,19 @@ const style = {
     border: '1px solid black'
   }
 }
+
 const PostCard = ({title, img, notes, zip}) => {
+
   return (
     <div style={style.container}>
       {title}
       <img src={img} />
       {notes}
-      {zip}
+// <<<<<<< test-for-passport
+//       {/* {current_observation.icon} */}
+// =======
+//       {zip}
+// >>>>>>> master
     </div>
   )
 }

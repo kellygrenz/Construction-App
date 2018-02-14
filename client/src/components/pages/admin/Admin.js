@@ -1,9 +1,11 @@
 import React from 'react'
-import ViewAllPost from '../posts/PostContainer'
+import AdminHeader from '../../structure/header/AdminHeader'
+
 const Admin = () => {
   return (
     <div>
-      <ViewAllPost />
+      I am admin.js
+      <AdminHeader />
     </div>
   )
 }

@@ -10,7 +10,6 @@ const style = {
     padding: '20px',
     borderBottom: '1px dashed #f26522'
 
-
   },
   headerImg: {
 
@@ -31,8 +30,9 @@ const Header = ({domainData}) => {
       <img src='images/logo.png' style={style.headerImg} />
 
       <NavItem to='/'>Home</NavItem>
+      {/* <NavItem to='/about'>About</NavItem> */}
       <NavItem to='/admin'>Admin</NavItem>
-      <NavItem to='/admin-sign-up'>Sign-up</NavItem>
+      {/* <NavItem to='/admin-sign-up'>Sign-up</NavItem> */}
       <NavItem to='/developer'>Developer</NavItem>
       <NavItem to='/add-posts'>Add Post</NavItem>
       <NavItem to='/posts'>Posts</NavItem>

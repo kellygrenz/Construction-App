@@ -4,13 +4,15 @@ const Admin = require('../models/Admin')
 
 Router.route('/')
   .get((req, res) => {
-    Admin.find((err, admins) => {
-      if (err) {
-        res.json({error: err})
-      } else {
-        res.json({msg: 'SUCCESS', data: admins})
-      }
-    })
+    Admin.find()
+      .populate('post')
+      .exec((err, admins) => {
+        if (err) {
+          res.json({error: err})
+        } else {
+          res.json({msg: 'SUCCESS', data: admins})
+        }
+      })
   })
   .post((req, res) => {
     const admin = new Admin()
@@ -28,13 +30,15 @@ Router.route('/')
 Router.route('/:adminId')
   .get((req, res) => {
     const adminId = req.params.adminId
-    Admin.findById({_id: adminId}, (err, admin) => {
-      if (err) {
-        res.json({error: err})
-      } else {
-        res.json({msg: `Found: ${adminId}`, admin})
-      }
-    })
+    Admin.findById({_id: adminId})
+      .populate('post')
+      .exec((err, admin) => {
+        if (err) {
+          res.json({error: err})
+        } else {
+          res.json({msg: `Found: ${adminId}`, admin})
+        }
+      })
   })
   .put((req, res) => {
     const editAdminId = req.params.adminId
@@ -63,4 +67,5 @@ Router.route('/:adminId')
       }
     })
   })
+
 module.exports = Router

@@ -32,7 +32,6 @@ class AddPostContainer extends Component {
       this.props.domainData.getAllPosts()
       this.props.domainData.getWeather()
       this.props.history.push('/posts')
-      
     })
   }
   render () {
