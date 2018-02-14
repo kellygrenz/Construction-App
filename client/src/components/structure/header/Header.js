@@ -9,13 +9,13 @@ const style = {
     justifyContent: 'flex-start',
     padding: '20px',
     borderBottom: '1px dashed #f26522'
-    
-    
+
+
   },
   headerImg: {
-    
+
     // marginRight: '50px'
-    
+
   },
   userLinks: {
     display: 'flex',
@@ -28,7 +28,7 @@ const style = {
 const Header = ({domainData}) => {
   return (
     <nav style={style.container}>
-       <img src="images/logo.png" style={style.headerImg}/>
+      <img src='images/logo.png' style={style.headerImg} />
 
       <NavItem to='/'>Home</NavItem>
       <NavItem to='/admin'>Admin</NavItem>
