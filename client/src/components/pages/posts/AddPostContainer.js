@@ -8,7 +8,8 @@ class AddPostContainer extends Component {
   state = {
     title: undefined,
     notes: undefined,
-    img: undefined
+    img: undefined,
+    zip: undefined
   }
 
   static propTypes = {
@@ -20,8 +21,8 @@ class AddPostContainer extends Component {
 
   submitPostToServer = (e) => {
     e.preventDefault()
-    const {title, notes, img} = this.state
-    const newPost = {title, notes, img}
+    const {title, notes, img, zip} = this.state
+    const newPost = {title, notes, img, zip}
     $.ajax({
       url: '/api/posts',
       method: 'POST',

@@ -9,6 +9,7 @@ const style = {
     justifyContent: 'flex-start',
     padding: '20px',
     borderBottom: '1px dashed #f26522'
+
   },
   headerImg: {
 

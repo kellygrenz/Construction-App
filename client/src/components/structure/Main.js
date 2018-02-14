@@ -1,15 +1,18 @@
 import React from 'react'
 import {Route, Switch} from 'react-router-dom'
 import Home from '../pages/Home'
+
 import About from '../pages/About'
 
 import Admin from '../pages/admin/Admin'
 import AdminLoginContainer from '../pages/authentication/AdminLoginContainer'
 import AdminSignUpContainer from '../pages/authentication/AdminSignUpContainer'
 
+
+import Developer from '../pages/developer/Developer'
+
 import AddPostContainer from '../pages/posts/AddPostContainer'
 import PostContainer from '../pages/posts/PostContainer'
-
 import PropTypes from 'prop-types'
 
 const Main = ({domainData}) => {
@@ -22,6 +25,9 @@ const Main = ({domainData}) => {
       <Route path='/admin' render={() => <Admin />} />{/* I'm admin's home and empty */}
       <Route path='/add-posts' render={() => <AddPostContainer domainData={domainData} />} />
       <Route path='/posts' render={() => <PostContainer domainData={domainData} />} />
+
+      <Route path='/developer' render={() => <Developer />} />
+
       <Route path='/' component={Home} />{/* Im not even being used right now */}
     </Switch>
 
