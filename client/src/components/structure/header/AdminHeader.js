@@ -21,7 +21,8 @@ const AdminHeader = ({domainData}) => {
   return (
     <div style={style.bar}>
       <div>
-        <NavItem to='/admin'>Home</NavItem>
+        <NavItem to='/admin'>Admin</NavItem>
+        <NavItem to='/add-posts'>+ Post</NavItem>
       </div>
       <div style={style.signAndLog}>
         <NavItem to='/admin-sign-up'>Sign-Up</NavItem>

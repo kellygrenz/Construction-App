@@ -2,14 +2,14 @@
 const Errors = require('./Errors')
 
 module.exports = (app, passport) => {
-  app.post('/api/sign-up', (req, res, next) => {
-    passport.authenticate('local-signup', (err, user, info) => {
+  app.post('/api/developer-sign-up', (req, res, next) => {
+    passport.authenticate('local-developer-signup', (err, developer, info) => {
       if (err) {
         return next(err)
       }
 
-      if (!user) {
-        if (!req.body.email) {
+      if (!developer) {
+        if (!req.body.developerEmail) {
           return next(Errors.missingEmail(info))
         }
         if (!req.body.password) {
@@ -18,58 +18,58 @@ module.exports = (app, passport) => {
         return next(Errors.missingCredentials(info))
       }
 
-      req.logIn(user, (err) => {
+      req.logIn(developer, (err) => {
         if (err) {
           return next(err)
         }
         return res.status(200).json({
           message: 'SIGNUP SUCCESSFUL',
-          data: user
+          data: developer
         })
       })
     })(req, res, next)
   })
 
-  app.post('/api/login', (req, res, next) => {
-    passport.authenticate('local-login', (err, user, info) => {
+  app.post('/api/developer-login', (req, res, next) => {
+    passport.authenticate('local-developer-login', (err, developer, info) => {
       if (err) {
         return next(err)
       }
 
-      if (!user) {
-        if (!req.body.email) {
-          return next(Errors.unknownEmail({email: '', ...info}))
+      if (!developer) {
+        if (!req.body.developerEmail) {
+          return next(Errors.unknownEmail({developerEmail: '', ...info}))
         }
-        if (!req.body.password) {
+        if (!req.body.developerPassword) {
           return next(Errors.incorrectPassword(info))
         }
         return next(Errors.missingCredentials(info))
       }
-      req.logIn(user, (err) => {
+      req.logIn(developer, (err) => {
         if (err) {
           return next(err)
         }
         return res.status(200).json({
-          message: 'LOGIN SUCCESSFUL',
-          data: user
+          message: 'DEVELOPER LOGIN SUCCESSFUL',
+          data: developer
         })
       })
     })(req, res, next)
   })
 
-  app.get('/api/get_user', (req, res) => {
+  app.get('/api/get_developer', (req, res) => {
     res.status(200)
       .json({
-        message: req.user ? 'USER SESSION EXISTS' : 'USER SESSION DOES NOT EXIST',
-        data: req.user
+        message: req.developer ? 'developer SESSION EXISTS' : 'developer SESSION DOES NOT EXIST',
+        data: req.developer
       })
   })
 
-  app.get('/api/logout', (req, res) => {
+  app.get('/api/developer-logout', (req, res) => {
     req.logout()
     return res.status(200)
       .json({
-        message: 'LOGOUT SUCCESSFUL'
+        message: 'DEVELOPER LOGOUT SUCCESSFUL'
       })
   })
 

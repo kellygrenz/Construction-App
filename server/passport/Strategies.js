@@ -1,12 +1,12 @@
 const bcrypt = require('bcrypt-nodejs')
 const LocalStrategy = require('passport-local').Strategy
-const User = require('../models/User')
+const Developer = require('../models/Developer')
 const Admin = require('../models/Admin')
 const Errors = require('./Errors')
 
 const localStrategyConfig = {
-  usernameField: 'email',
-  passwordField: 'password',
+  usernameField: 'developerEmail',
+  passwordField: 'developerPassword',
   failureFlash: true
 }
 // console.log(localStrategyConfig.usernameField)
@@ -19,58 +19,58 @@ const generateHash = (clearPassword) =>
 
 module.exports = (passport) => {
   passport.serializeUser(
-    (user, done) => done(null, user._id)
+    (developer, done) => done(null, developer._id)
   )
 
-  passport.deserializeUser(User.findById.bind(User))
+  passport.deserializeUser(Developer.findById.bind(Developer))
 
-  passport.use('local-signup', new LocalStrategy({
+  passport.use('local-developer-signup', new LocalStrategy({
     ...localStrategyConfig,
     passReqToCallback: true
-  }, (req, email, password, done) => {
-    User.findOne({'local.email': email}, (err, user) => {
+  }, (req, developerEmail, developerPassword, done) => {
+    Developer.findOne({'local.developerEmail': developerEmail}, (err, developer) => {
       if (err) {
         return done(err)
       }
 
-      if (user) {
-        return done(Errors.duplicateEmail({email}))
+      if (developer) {
+        return done(Errors.duplicateEmail({developerEmail}))
       }
 
       const {body} = req
-      const newUser = new User({
+      const newDeveloper = new Developer({
         local: {
-          email,
-          password: generateHash(password),
-          firstName: body.firstName,
-          lastName: body.lastName,
+          developerEmail,
+          developerPassword: generateHash(developerPassword),
+          developerFirstName: body.developerFirstName,
+          developerLastName: body.developerLastName,
           role: body.role
         }
       })
 
-      newUser.setDate()
+      newDeveloper.setDate()
 
-      newUser.save(
-        (err) => err ? done(err) : done(null, newUser)
+      newDeveloper.save(
+        (err) => err ? done(err) : done(null, newDeveloper)
       )
     })
   }))
 
-  passport.use('local-login', new LocalStrategy(localStrategyConfig, (email, password, done) => {
-    User.findOne({'local.email': email}, (err, user) => {
+  passport.use('local-developer-login', new LocalStrategy(localStrategyConfig, (developerEmail, developerPassword, done) => {
+    Developer.findOne({'local.developerEmail': email}, (err, developer) => {
       if (err) {
         return done(err)
       }
 
-      if (!user) {
-        return done(Errors.unknownEmail({email}))
+      if (!developer) {
+        return done(Errors.unknownEmail({developerEmail}))
       }
 
-      if (!isPasswordValid(password, user.local.password)) {
+      if (!isPasswordValid(developerPassword, developer.local.developerPassword)) {
         return done(Errors.incorrectPassword())
       }
 
-      return done(null, user)
+      return done(null, developer)
     })
   }))
 

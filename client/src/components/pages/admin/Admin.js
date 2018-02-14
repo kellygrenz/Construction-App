@@ -1,11 +1,18 @@
 import React from 'react'
 import AdminHeader from '../../structure/header/AdminHeader'
+import PostContainer from '../posts/PostContainer'
 
-const Admin = () => {
+
+const Admin = ({domainData}) => {
   return (
     <div>
-      I am admin.js
+    
+
       <AdminHeader />
+
+      <PostContainer 
+        domainData={domainData}
+      />
     </div>
   )
 }
