@@ -6,23 +6,22 @@ const style = {
   container: {
     display: 'flex',
     padding: '10px'
-    
   },
   link: {
     textDecoration: 'none',
     display: 'flex',
+    width: 75,
     color: '#333',
     fontSize: '20px',
     padding: '20px',
     fontFamily: 'Oswald, sans-serif'
-    
   }
 }
 
 const NavItem = ({to, children}) => {
   return (
     <div style={style.container}>
-      <NavLink  style={style.link} to={to}>{children}</NavLink>
+      <NavLink style={style.link} to={to}>{children}</NavLink>
     </div>
   )
 }

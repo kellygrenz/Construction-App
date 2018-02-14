@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
 import $ from 'jquery'
+import * as UserApi from './lib/userApi'
+import * as AdminApi from './lib/adminApi'
 import Layout from './components/structure/Layout'
 
 export default class componentName extends Component {
   state = {
-    // isLoaded: false,
+    isLoaded: false,
     admin: null,
     posts: null
     // projects: []
@@ -20,18 +22,15 @@ export default class componentName extends Component {
         this.setState({admin: response.admin, isLoaded: true})
       })
     },
-
-    getWeather: () => {
+    getWeather: () => { // we need to figure this out
       $.ajax({
         url: 'http://api.wunderground.com/api/c675f48a3374f27d/conditions/q/MT/Bozeman.json',
         method: 'POST'
       }).done((response) => {
-        console.log(response, 'get weather');
+        console.log(response, 'get weather')
       })
-
     },
-
-    getAllProjects: () => {
+    getAllProjects: () => { // not used yet
       $.ajax({
         url: '/api/projects',
         method: 'GET'
@@ -40,7 +39,6 @@ export default class componentName extends Component {
         this.setState({projects: response.projects, isLoaded: true})
       })
     },
-
     getAllPosts: () => {
       $.ajax({
         url: '/api/posts',
@@ -58,7 +56,63 @@ export default class componentName extends Component {
         console.log(response, 'getPost() clg')
         // this.setState({})
       })
-    }
+    },
+    // ---------------------------UserApi stuff----------------------------
+    newUser: (user) =>
+      UserApi.signupUser(user)
+        .then(user => {
+          console.log('from newUser', user)
+          this.setState({user})
+          return user
+        }),
+    loginUser: (email, password) =>
+      UserApi.loginUser(email, password)
+        .then(user => {
+          console.log('loginUser messsage', user)
+          // this.setState({user})
+          this.methods.getUser(user)
+          return user
+        }),
+    getUser: (user) =>
+      UserApi.getUser(user._id)
+        .then(user => {
+          console.log('from getUser()', user)
+          this.setState({user})
+          return user
+        }),
+    logoutUser: () =>
+      UserApi.logoutUser()
+        .then(user => {
+          this.setState({user: null})
+        }),
+    // ---------------------------AdminApi stuff----------------------------
+    newAdmin: (admin) =>
+      AdminApi.signupAdmin(admin)
+        .then(admin => {
+          console.log('from newAdmin', admin)
+          this.setState({admin})
+          return admin
+        }),
+    loginAdmin: (adminEmail, adminPassword) =>
+      AdminApi.loginAdmin(adminEmail, adminPassword)
+        .then(admin => {
+          console.log('loginAdmin messsage', admin)
+          // this.setState({admin})
+          this.methods.getAdmin(admin)
+          return admin
+        }),
+    getAdmin: (admin) =>
+      AdminApi.getAdmin(admin._id)
+        .then(admin => {
+          console.log('from getAdmin()', admin)
+          this.setState({admin})
+          return admin
+        }),
+    logoutAdmin: () =>
+      AdminApi.logoutAdmin()
+        .then(admin => {
+          this.setState({admin: null})
+        })
   }
 
   componentDidMount () {
@@ -69,11 +123,12 @@ export default class componentName extends Component {
   render () {
     const domainData = {
       ...this.state,
-      ...this.methods
+      ...this.methods,
+      loggedIn: this.state.admin != null,
+      loggedOut: this.state.admin == null
     }
     return (
       <div>
-        {/* <Layout domainData={domainData} /> */}
         {
           this.state.isLoaded
             ? <Layout domainData={domainData} />

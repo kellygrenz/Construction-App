@@ -4,7 +4,7 @@ import $ from 'jquery'
 import PropTypes from 'prop-types'
 import AddAdminForm from './AddAdminForm'
 
-export class AddAdminContainer extends Component {
+class AddAdminContainer extends Component {
   state = {
     name: undefined,
     email: undefined
