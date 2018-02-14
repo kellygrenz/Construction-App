@@ -30,10 +30,10 @@ const handleErrors = response => {
   return response
 }
 
-export const signupUser = (user) => ajaxRequest('sign-up', 'POST', user)
+export const signupDeveloper = (developer) => ajaxRequest('developer-sign-up', 'POST', developer)
 
-export const loginUser = (email, password) => ajaxRequest('login', 'POST', {email, password})
+export const loginDeveloper = (developerEmail, developerPassword) => ajaxRequest('developer-login', 'POST', {developerEmail, developerPassword})
 
-export const getUser = () => ajaxRequest('get_user', 'GET')
+export const getDeveloper = () => ajaxRequest('get_developer', 'GET')
 
-export const logoutUser = () => ajaxRequest('logout', 'GET')
+export const logoutDeveloper = () => ajaxRequest('developer-logout', 'GET')

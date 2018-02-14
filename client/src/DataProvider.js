@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import $ from 'jquery'
-import * as UserApi from './lib/userApi'
+import * as DeveloperApi from './lib/developerApi'
 import * as AdminApi from './lib/adminApi'
 import Layout from './components/structure/Layout'
 
@@ -8,7 +8,8 @@ export default class componentName extends Component {
   state = {
     isLoaded: false,
     admin: null,
-    posts: null
+    posts: null,
+    developer: null
     // projects: []
   }
 
@@ -22,17 +23,15 @@ export default class componentName extends Component {
         this.setState({admin: response.admin, isLoaded: true})
       })
     },
-    getWeather: () => { // we need to figure this out
-      $.ajax({
-        url: 'http://api.wunderground.com/api/c675f48a3374f27d/geolookup/q/94107.json',
-        method: 'POST'
-      }).done((response) => {
-        console.log(response, 'get weather')
-
-        this.setState({post: response.data, isLoaded: true})
-
-      })
-    },
+    // getWeather: () => { // we need to figure this out
+    //   $.ajax({
+    //     url: 'http://api.wunderground.com/api/c675f48a3374f27d/geolookup/q/94107.json',
+    //     method: 'POST'
+    //   }).done((response) => {
+    //     console.log(response, 'get weather')
+    //     this.setState({post: response.data, isLoaded: true})
+    //   })
+    // },
     getAllProjects: () => { // not used yet
       $.ajax({
         url: '/api/projects',
@@ -60,33 +59,33 @@ export default class componentName extends Component {
         // this.setState({})
       })
     },
-    // ---------------------------UserApi stuff----------------------------
-    newUser: (user) =>
-      UserApi.signupUser(user)
-        .then(user => {
-          console.log('from newUser', user)
-          this.setState({user})
-          return user
+    // ---------------------------DeveloperApi stuff----------------------------
+    newDeveloper: (developer) =>
+      DeveloperApi.signupDeveloper(developer)
+        .then(developer => {
+          console.log('from newDeveloper', developer)
+          this.setState({developer})
+          return developer
         }),
-    loginUser: (email, password) =>
-      UserApi.loginUser(email, password)
-        .then(user => {
-          console.log('loginUser messsage', user)
-          // this.setState({user})
-          this.methods.getUser(user)
-          return user
+    loginDeveloper: (developerEmail, developerPassword) =>
+      DeveloperApi.loginDeveloper(developerEmail, developerPassword)
+        .then(developer => {
+          console.log('loginDeveloper messsage', developer)
+          // this.setState({developer})
+          this.methods.getDeveloper(developer)
+          return developer
         }),
-    getUser: (user) =>
-      UserApi.getUser(user._id)
-        .then(user => {
-          console.log('from getUser()', user)
-          this.setState({user})
-          return user
+    getDeveloper: (developer) =>
+      DeveloperApi.getDeveloper(developer._id)
+        .then(developer => {
+          console.log('from getDeveloper()', developer)
+          this.setState({developer})
+          return developer
         }),
-    logoutUser: () =>
-      UserApi.logoutUser()
-        .then(user => {
-          this.setState({user: null})
+    logoutDeveloper: () =>
+      DeveloperApi.logoutDeveloper()
+        .then(developer => {
+          this.setState({developer: null})
         }),
     // ---------------------------AdminApi stuff----------------------------
     newAdmin: (admin) =>

@@ -1,9 +1,14 @@
 import React from 'react'
+import DeveloperHeader from '../../structure/header/DeveloperHeader'
+// import PostContainer from '../post/PostContainer'
 
-const Developer = () => {
+const Developer = ({domainData}) => {
   return (
     <div>
-      Developer
+      <DeveloperHeader />
+      {/* <PostContainer
+        domainData={domainData}
+      /> */}
     </div>
   )
 }
