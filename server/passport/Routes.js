@@ -1,4 +1,4 @@
-// const express = require('express')
+const express = require('express')
 const Errors = require('./Errors')
 
 module.exports = (app, passport) => {
@@ -57,6 +57,8 @@ module.exports = (app, passport) => {
   })
 
   app.get('/api/get_developer', (req, res) => {
+    console.log(res, 'get_developer');
+    console.log(req, 'get req');
     res.status(200)
       .json({
         message: req.developer ? 'DEVELOPER SESSION EXISTS' : 'DEVELOPER SESSION DOES NOT EXIST',

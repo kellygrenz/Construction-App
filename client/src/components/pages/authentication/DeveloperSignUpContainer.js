@@ -1,14 +1,14 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
-import SignUpForm from './SignUpForm'
+import DeveloperSignUpForm from './DeveloperSignUpForm'
 import PropTypes from 'prop-types'
 
-class SignUpContainer extends Component {
+class DeveloperSignUpContainer extends Component {
   state = {
-    firstName: undefined,
-    lastName: undefined,
-    email: undefined,
-    password: undefined
+    developerFirstName: undefined,
+    developerLastName: undefined,
+    developerEmail: undefined,
+    developerPassword: undefined
   }
 
   static propTypes = {
@@ -17,11 +17,10 @@ class SignUpContainer extends Component {
   }
   onChangeHandler = (e) => this.setState({[e.target.id]: e.target.value})
 
-  onSubmit = (e) => {
+  submitDeveloperToServer = (e) => {
     e.preventDefault()
-    console.log('newUser message')
-    this.props.domainData.newUser(this.state)
-      .then(() => this.props.history.push('/login'))
+    this.props.domainData.newDeveloper(this.state)
+      .then(() => this.props.history.push('/developer-login'))
       .catch(err => alert(err, Object.keys(err)))
   }
 
@@ -29,13 +28,13 @@ class SignUpContainer extends Component {
     return (
       <div>
         <h2>Sign up</h2>
-        <SignUpForm
+        <DeveloperSignUpForm
           {...this.state}
           onChangeHandler={this.onChangeHandler}
-          onSubmit={this.onSubmit} />
+          submitDeveloperToServer={this.submitDeveloperToServer} />
       </div>
     )
   }
 }
 
-export default withRouter(SignUpContainer)
+export default withRouter(DeveloperSignUpContainer)

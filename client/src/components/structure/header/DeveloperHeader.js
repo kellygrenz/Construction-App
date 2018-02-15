@@ -1,6 +1,7 @@
 import React from 'react'
 import NavItem from './NavItem'
 import PropTypes from 'prop-types'
+import HeaderLink from './HeaderLink'
 
 const style = {
   bar: {
@@ -25,8 +26,19 @@ const DeveloperHeader = ({domainData}) => {
         <NavItem to='/add-posts'>+ Post</NavItem>
       </div>
       <div style={style.signAndLog}>
-        <NavItem to='/developer-sign-up'>Sign-Up</NavItem>
-        <NavItem to='/developer-login'>Login</NavItem>
+        {
+          domainData.loggedOut
+            ? <div>
+              <NavItem to='/developer-sign-up'>Sign-Up</NavItem>
+              <NavItem to='/developer-login'>Login</NavItem>
+            </div>
+            : null
+        }
+        {
+          domainData.loggedIn
+            ? <HeaderLink onClick={domainData.logoutDeveloper}>Logout:{domainData.developer.local.develoerEmail}</HeaderLink>
+            : null
+        }
       </div>
     </div>
   )

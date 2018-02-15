@@ -83,7 +83,7 @@ export default class componentName extends Component {
         }),
     logoutDeveloper: () =>
       DeveloperApi.logoutDeveloper()
-        .then(developer => {
+        .then(() => {
           this.setState({developer: null})
         }),
     // ---------------------------AdminApi stuff----------------------------
@@ -111,7 +111,7 @@ export default class componentName extends Component {
         }),
     logoutAdmin: () =>
       AdminApi.logoutAdmin()
-        .then(admin => {
+        .then(() => {
           this.setState({admin: null})
         })
   }
@@ -125,8 +125,10 @@ export default class componentName extends Component {
     const domainData = {
       ...this.state,
       ...this.methods,
-      loggedIn: this.state.admin != null,
-      loggedOut: this.state.admin == null
+      loggedIn: this.state.admin != null, //|| this.state.developer != null,
+      loggedOut: this.state.admin == null //|| this.state.developer == null
+      // developerLoggedIn: this.state.developer != null,
+      // developerLoggedOut: this.state.developer == null
     }
     return (
       <div>

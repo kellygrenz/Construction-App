@@ -44,7 +44,7 @@ const AdminLoginForm = ({id, handleChange, loginAdmin}) => {
           <h3>
             Password:
           </h3>
-          <input style={style.inputField} type='text' onChange={handleChange} id='password' placeholder='adminPassword' />
+          <input style={style.inputField} type='text' onChange={handleChange} id='adminPassword' placeholder='password' />
         </card>
       </div>
       <div style={style.button}>

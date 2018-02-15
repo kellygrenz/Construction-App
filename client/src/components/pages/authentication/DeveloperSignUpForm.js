@@ -32,7 +32,7 @@ const style = {
     borderRadius: 5
   }
 }
-const SignUpForm = ({id, onChangeHandler, onSubmit}) => {
+const DeveloperSignUpForm = ({id, onChangeHandler, submitDeveloperToServer}) => {
   return (
     <form style={style.container}>
       <div style={style.card}>
@@ -40,28 +40,28 @@ const SignUpForm = ({id, onChangeHandler, onSubmit}) => {
           <h3>
             First Name:
           </h3>
-          <input style={style.inputField} type='text' onChange={onChangeHandler} placeholder='First Name' id='firstName' />
+          <input style={style.inputField} type='text' onChange={onChangeHandler} placeholder='First Name' id='developerFirstName' />
         </card>
 
         <card raised='true'>
           <h3>
             Last Name:
           </h3>
-          <input style={style.inputField} type='text' onChange={onChangeHandler} placeholder='Last Name' id='lastName' />
+          <input style={style.inputField} type='text' onChange={onChangeHandler} placeholder='Last Name' id='developerLastName' />
         </card>
 
         <card raised='true'>
           <h3>
             Email:
           </h3>
-          <input style={style.inputField} type='text' onChange={onChangeHandler} placeholder='Email' id='email' />
+          <input style={style.inputField} type='text' onChange={onChangeHandler} placeholder='Email' id='developerEmail' />
         </card>
 
         <card>
           <h3>
             Password:
           </h3>
-          <input style={style.inputField} type='text' onChange={onChangeHandler} id='password' placeholder='Password' />
+          <input style={style.inputField} type='text' onChange={onChangeHandler} id='developerPassword' placeholder='password' />
         </card>
       </div>
       <br />
@@ -70,17 +70,17 @@ const SignUpForm = ({id, onChangeHandler, onSubmit}) => {
           <small>Already signed-up? Click the LOGIN button</small>
         </div>
         <div>
-          <button raised onClick={onSubmit}>Register</button>
-          <button style={style.butlin} raised><Link to='/login' style={style.link}>Login</Link></button>
+          <button raised onClick={submitDeveloperToServer}>Register</button>
+          <button style={style.butlin} raised><Link to='/developer-login' style={style.link}>Login</Link></button>
         </div>
       </div>
     </form>
   )
 }
 
-SignUpForm.propTypes = {
+DeveloperSignUpForm.propTypes = {
   id: PropTypes.object,
   onChangeHandler: PropTypes.func.isRequired,
-  onSubmit: PropTypes.func.isRequired
+  submitDeveloperToServer: PropTypes.func.isRequired
 }
-export default SignUpForm
+export default DeveloperSignUpForm
