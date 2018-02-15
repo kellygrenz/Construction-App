@@ -34,6 +34,6 @@ export const signupDeveloper = (developer) => ajaxRequest('developer-sign-up', '
 
 export const loginDeveloper = (developerEmail, developerPassword) => ajaxRequest('developer-login', 'POST', {developerEmail, developerPassword})
 
-export const getDeveloper = () => ajaxRequest('get_developer', 'GET')
+export const getDeveloper = (developer) => ajaxRequest(`developers/${developer}`, 'GET')
 
 export const logoutDeveloper = () => ajaxRequest('developer-logout', 'GET')

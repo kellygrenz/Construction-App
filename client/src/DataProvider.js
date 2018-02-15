@@ -7,21 +7,22 @@ import Layout from './components/structure/Layout'
 export default class componentName extends Component {
   state = {
     isLoaded: false,
-    admin: null,
     posts: [],
+    admin: null,
     developer: null
   }
 
   methods = {
-    getAdmins: () => {
-      $.ajax({
-        url: '/api/admins',
-        method: 'GET'
-      }).done((response) => {
-        console.log(response, 'get all admin')
-        this.setState({admin: response.admin, isLoaded: true})
-      })
-    },
+    // getAdmins: () => {
+    //   $.ajax({
+    //     url: '/api/admins',
+    //     method: 'GET'
+    //   }).done((response) => {
+    //     console.log(response, 'get all admin')
+    //     this.setState({admin: response.admin, isLoaded: true})
+    //   })
+    // },
+
     // getWeather: () => { // we need to figure this out
     //   $.ajax({
     //     url: 'http://api.wunderground.com/api/c675f48a3374f27d/geolookup/q/94107.json',
@@ -31,12 +32,13 @@ export default class componentName extends Component {
     //     this.setState({post: response.data, isLoaded: true})
     //   })
     // },
+
     getAllProjects: () => { // not used yet
       $.ajax({
         url: '/api/projects',
         method: 'GET'
       }).done((response) => {
-        console.log(response, 'from getAllProjects()')
+        // console.log(response, 'from getAllProjects()')
         this.setState({projects: response.projects, isLoaded: true})
       })
     },
@@ -45,19 +47,19 @@ export default class componentName extends Component {
         url: '/api/posts',
         method: 'GET'
       }).done((response) => {
-        console.log(response, 'getAllPosts()asdfasdfdfasdffffffff')
+        // console.log(response, 'getAllPosts()asdfasdfdfasdffffffff')
         this.setState({posts: response.data, isLoaded: true})
       })
     },
-    getPost: (id) => {
-      $.ajax({
-        url: `/api/posts/${id}`,
-        method: 'GET'
-      }).done((response) => {
-        console.log(response, 'getPost() clg')
-        // this.setState({})
-      })
-    },
+    // getPost: (id) => {
+    //   $.ajax({
+    //     url: `/api/posts/${id}`,
+    //     method: 'GET'
+    //   }).done((response) => {
+    //     console.log(response, 'getPost() clg')
+    //     // this.setState({})
+    //   })
+    // },
     // ---------------------------DeveloperApi stuff----------------------------
     newDeveloper: (developer) =>
       DeveloperApi.signupDeveloper(developer)
@@ -125,10 +127,10 @@ export default class componentName extends Component {
     const domainData = {
       ...this.state,
       ...this.methods,
-      loggedIn: this.state.admin != null, //|| this.state.developer != null,
-      loggedOut: this.state.admin == null //|| this.state.developer == null
-      // developerLoggedIn: this.state.developer != null,
-      // developerLoggedOut: this.state.developer == null
+      loggedIn: this.state.admin != null, // || this.state.developer != null,
+      loggedOut: this.state.admin == null, // || this.state.developer == null
+      developerLoggedIn: this.state.developer != null,
+      developerLoggedOut: this.state.developer == null
     }
     return (
       <div>

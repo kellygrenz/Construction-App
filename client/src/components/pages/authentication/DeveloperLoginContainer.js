@@ -18,7 +18,7 @@ class DeveloperLoginContainer extends Component {
 
   loginDeveloper = (e) => {
     e.preventDefault()
-    console.log('loginDeveloper message')
+    // console.log('loginDeveloper message')
     this.props.domainData.loginDeveloper(this.state.developerEmail, this.state.developerPassword)
       .then(() => this.props.history.push('/developer'))
       .catch(err => alert(err, Object.keys(err)))
