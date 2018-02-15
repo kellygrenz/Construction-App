@@ -27,7 +27,7 @@ const DeveloperHeader = ({domainData}) => {
       </div>
       <div style={style.signAndLog}>
         {
-          domainData.loggedOut
+          domainData.developerLoggedOut
             ? <div>
               <NavItem to='/developer-sign-up'>Sign-Up</NavItem>
               <NavItem to='/developer-login'>Login</NavItem>
@@ -35,8 +35,8 @@ const DeveloperHeader = ({domainData}) => {
             : null
         }
         {
-          domainData.loggedIn
-            ? <HeaderLink onClick={domainData.logoutDeveloper}>Logout:{domainData.developer.local.develoerEmail}</HeaderLink>
+          domainData.developerLoggedIn
+            ? <button type='button'><HeaderLink onClick={domainData.logoutDeveloper}>Logout:{domainData.developer.local.developerEmail}</HeaderLink></button>
             : null
         }
       </div>

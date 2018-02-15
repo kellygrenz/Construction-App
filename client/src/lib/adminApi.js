@@ -34,6 +34,6 @@ export const signupAdmin = (admin) => ajaxRequest('admin-sign-up', 'POST', admin
 
 export const loginAdmin = (adminEmail, adminPassword) => ajaxRequest('admin-login', 'POST', {adminEmail, adminPassword})
 
-export const getAdmin = () => ajaxRequest('get_admin', 'GET')
+export const getAdmin = (admin) => ajaxRequest(`admins/${admin}`, 'GET')
 
 export const logoutAdmin = () => ajaxRequest('admin-logout', 'GET')

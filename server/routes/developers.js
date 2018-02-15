@@ -4,13 +4,15 @@ const Developer = require('../models/Developer')
 
 Router.route('/')
   .get((req, res) => {
-    Developer.find((err, developer) => {
-      if (err) {
-        res.json({error: err})
-      } else {
-        res.json({msg: 'Success', data: developer})
-      }
-    })
+    Developer.find()
+      .populate('post')
+      .exec((err, developer) => {
+        if (err) {
+          res.json({error: err})
+        } else {
+          res.json({msg: 'Success', data: developer})
+        }
+      })
   })
   .post((req, res) => {
     const developer = new Developer()
@@ -26,6 +28,18 @@ Router.route('/')
   })
 
 Router.route('/:developerId')
+  .get((req, res) => {
+    const developerId = req.params.developerId
+    Developer.findById({_id: developerId})
+      .populate('post')
+      .exec((err, developer) => {
+        if (err) {
+          res.json({error: err})
+        } else {
+          res.json({msg: `Found: ${developerId}`, data: developer})
+        }
+      })
+  })
   .delete((req, res) => {
     const developerId = req.params.developerId
     Developer.remove({_id: developerId}, (err, developer) => {
