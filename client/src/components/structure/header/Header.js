@@ -28,7 +28,7 @@ const Header = ({domainData}) => {
   return (
     <div style={style.container}>
       <div style={style.headerImg}>
-        <NavItem  to='/'><img src='images/logo.png'  /></NavItem>
+        <NavItem to='/'><img src='images/logo.png'  /></NavItem>
       </div>
       <div>
         

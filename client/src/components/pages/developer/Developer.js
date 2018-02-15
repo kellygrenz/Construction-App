@@ -5,7 +5,7 @@ import DeveloperHeader from '../../structure/header/DeveloperHeader'
 const Developer = ({domainData}) => {
   return (
     <div>
-      <DeveloperHeader />
+      <DeveloperHeader domainData={domainData} />
       {/* <PostContainer
         domainData={domainData}
       /> */}
