@@ -2,7 +2,6 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 const Developer = new Schema({
-  
   local: {
     developerFirstName: { type: String, required: true },
     developerLastName: {type: String, required: true},
