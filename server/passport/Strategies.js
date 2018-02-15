@@ -57,7 +57,7 @@ module.exports = (passport) => {
   }))
 
   passport.use('local-developer-login', new LocalStrategy(localStrategyConfig, (developerEmail, developerPassword, done) => {
-    Developer.findOne({'local.developerEmail': email}, (err, developer) => {
+    Developer.findOne({'local.developerEmail': developerEmail}, (err, developer) => {
       if (err) {
         return done(err)
       }

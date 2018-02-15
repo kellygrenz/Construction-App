@@ -6,7 +6,6 @@ const PostList = ({posts}) => {
   return (
     <div>
       {
-
         posts.map((post, index) => {
           return <PostCard
             {...post}

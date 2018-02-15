@@ -20,7 +20,7 @@ class AdminLoginContainer extends Component {
     e.preventDefault()
     this.props.domainData.loginAdmin(this.state.adminEmail, this.state.adminPassword)
       .then(() => this.props.history.push('/admin'))
-      .catch(err => alert(err, Object.key(err)))
+      .catch(err => alert(err, Object.keys(err)))
   }
 
   render () {

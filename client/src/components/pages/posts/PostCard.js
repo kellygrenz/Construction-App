@@ -8,7 +8,6 @@ const style = {
 }
 
 const PostCard = ({title, img, notes, zip}) => {
-
   return (
     <div style={style.container}>
       {title}
@@ -23,6 +22,7 @@ const PostCard = ({title, img, notes, zip}) => {
 PostCard.propTypes = {
   title: PropTypes.string.isRequired,
   img: PropTypes.string.isRequired,
-  notes: PropTypes.string.isRequired
+  notes: PropTypes.string.isRequired,
+  zip: PropTypes.string.isRequired
 }
 export default PostCard

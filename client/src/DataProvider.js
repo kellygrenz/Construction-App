@@ -8,9 +8,8 @@ export default class componentName extends Component {
   state = {
     isLoaded: false,
     admin: null,
-    posts: null,
+    posts: [],
     developer: null
-    // projects: []
   }
 
   methods = {
