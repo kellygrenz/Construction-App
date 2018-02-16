@@ -9,7 +9,8 @@ export default class componentName extends Component {
     isLoaded: false,
     posts: [],
     admin: null,
-    developer: null
+    developer: null,
+    projects: []
   }
 
   methods = {
@@ -39,7 +40,7 @@ export default class componentName extends Component {
         method: 'GET'
       }).done((response) => {
         // console.log(response, 'from getAllProjects()')
-        this.setState({projects: response.projects, isLoaded: true})
+        this.setState({projects: response.data, isLoaded: true})
       })
     },
     getAllPosts: () => {

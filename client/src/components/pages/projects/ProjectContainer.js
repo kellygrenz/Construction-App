@@ -1,11 +1,17 @@
 import React from 'react'
+import ProjectList from './ProjectList'
+import PropTypes from 'prop-types'
 
-const ProjectContainer = () => {
+const ProjectContainer = ({domainData}) => {
   return (
     <div>
-      This is ProjectContainer.js which returns ProductList.js
+      <ProjectList projects={domainData.projects}/>
     </div>
   )
+}
+
+ProjectContainer.propTypes = {
+  domainData: PropTypes.object.isRequired
 }
 
 export default ProjectContainer
