@@ -5,7 +5,7 @@ const Post = require('../models/Post')
 Router.route('/')
   .get((req, res) => {
     Post.find()
-      .populate('comments')
+      .populate('projects')
       .exec((err, posts) => {
         if (err) {
           res.json({ error: err })

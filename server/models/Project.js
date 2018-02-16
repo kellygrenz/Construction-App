@@ -6,6 +6,7 @@ const Project = new Schema({
   projectDescription: {type: String, required: true},
   developer: {type: String, required: true},
   address: String,
+  posts: [{type: Schema.Types.ObjectId, ref: 'project'}],
   created: {type: Date, required: true}
 })
 
