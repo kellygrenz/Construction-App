@@ -12,6 +12,7 @@ const Post = new Schema({
   // },
   zip: Number,
   notes: String,
+  project: {type: Schema.Types.ObjectId, ref: 'post'},
   created: {type: Date, required: true}
 })
 
