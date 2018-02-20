@@ -30,7 +30,7 @@ class AddPostContainer extends Component {
     }).done((response) => {
       console.log(response, 'submitPostToServer()')
       this.props.domainData.getAllPosts()
-      // this.props.domainData.getWeather()
+      this.props.domainData.getWeather()
       this.props.history.push('/posts') // propbably needs a ? : when logged in
     })
   }
