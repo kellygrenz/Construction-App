@@ -4,6 +4,10 @@ import * as DeveloperApi from './lib/developerApi'
 import * as AdminApi from './lib/adminApi'
 import Layout from './components/structure/Layout'
 
+const Wunderground = require('wundergroundnode')
+const myKey = 'c675f48a3374f27d'
+const wunderground = new Wunderground(myKey)
+
 export default class componentName extends Component {
   state = {
     isLoaded: false,
@@ -24,17 +28,17 @@ export default class componentName extends Component {
     //   })
     // },
 
-    // getWeather: () => { // we need to figure this out
-    //   $.ajax({
-    //     url: 'http://api.wunderground.com/api/c675f48a3374f27d/geolookup/q/94107.json',
-    //     method: 'POST'
-    //   }).done((response) => {
-    //     console.log(response, 'get weather')
-    //     this.setState({post: response.data, isLoaded: true})
-    //   })
-    // },
+    getWeather: () => {
+      $.ajax({
+        url: 'http://api.wunderground.com/api/c675f48a3374f27d/geolookup/q/80013.json',
+        method: 'GET'
+      }).done((response) => {
+        console.log(response, 'get weather')
+        this.setState({post: response.data, isLoaded: true})
+      })
+    },
 
-    getAllProjects: () => { // not used yet
+    getAllProjects: () => {
       $.ajax({
         url: '/api/projects',
         method: 'GET'
@@ -50,6 +54,14 @@ export default class componentName extends Component {
       }).done((response) => {
         // console.log(response, 'getAllPosts()asdfasdfdfasdffffffff')
         this.setState({posts: response.data, isLoaded: true})
+      })
+    },
+    deletePost: (id) => {
+      $.ajax({
+        url: `/api/posts/${id}`,
+        method: 'DELETE'
+      }).done((response) => {
+        this.methods.getAllPosts()
       })
     },
     // getPost: (id) => {
@@ -122,6 +134,14 @@ export default class componentName extends Component {
   componentDidMount () {
     this.methods.getAllProjects()
     this.methods.getAllPosts()
+    fetch('http://api.wunderground.com/api/c675f48a3374f27d/geolookup/q/80013.json')
+      .then(response => {
+        if (response.wunderground) {
+          return response.json()
+        } else {
+          response.json({msg: 'no weather'})
+        }
+      })
   }
 
   render () {
