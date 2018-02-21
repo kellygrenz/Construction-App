@@ -2,7 +2,8 @@ import React from 'react'
 import PostCard from './PostCard'
 import PropTypes from 'prop-types'
 
-const PostList = ({posts, city, weather}) => {
+const PostList = ({posts, city, weather, deletePost}}) => {
+
   return (
     <div>
       {
@@ -11,10 +12,10 @@ const PostList = ({posts, city, weather}) => {
             {...post}
             city={city}
             weather={weather}
-            key={index} />
+            key={index}
+            deletePost={deletePost} />
         })
       }
-
     </div>
   )
 }

@@ -11,8 +11,7 @@ const style = {
   }
 }
 
-const PostCard = ({title, img, notes, zip, city, weather}) => {
-  // console.log('from PostCard.js', city)
+const PostCard = ({title, img, notes, zip, city, weather, deletePost, _id}) => {
   return (
     <div style={style.container}>
       {title}
@@ -21,10 +20,13 @@ const PostCard = ({title, img, notes, zip, city, weather}) => {
       {city}
       {weather}
       {zip}
-
+      <div>
+        <button type='button' onClick={() => deletePost(_id)}>Delete Post</button>
+      </div>
     </div>
   )
 }
+
 PostCard.propTypes = {
   title: PropTypes.string.isRequired,
   img: PropTypes.string.isRequired,
