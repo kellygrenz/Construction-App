@@ -11,7 +11,7 @@ const style = {
   }
 }
 
-const PostCard = ({title, img, notes, zip}) => {
+const PostCard = ({title, img, notes, zip, deletePost, _id}) => {
   return (
     <div style={style.container}>
       {title}
@@ -19,6 +19,9 @@ const PostCard = ({title, img, notes, zip}) => {
       {notes}
       {}
       {zip}
+      <div>
+        <button type='button' onClick={() => deletePost(_id)}>Delete Post</button>
+      </div>
 
     </div>
   )

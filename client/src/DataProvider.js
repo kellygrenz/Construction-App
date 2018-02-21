@@ -56,6 +56,14 @@ export default class componentName extends Component {
         this.setState({posts: response.data, isLoaded: true})
       })
     },
+    deletePost: (id) => {
+      $.ajax({
+        url: `/api/posts/${id}`,
+        method: 'DELETE'
+      }).done((response) => {
+        this.methods.getAllPosts()
+      })
+    },
     // getPost: (id) => {
     //   $.ajax({
     //     url: `/api/posts/${id}`,
