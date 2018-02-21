@@ -10,7 +10,7 @@ const style = {
   link: {
     textDecoration: 'none',
     display: 'flex',
-    width: 75,
+    width: '75',
     color: '#333',
     fontSize: '20px',
     padding: '20px',
