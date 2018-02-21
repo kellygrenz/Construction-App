@@ -2,6 +2,7 @@ import React from 'react'
 import ProjectList from './ProjectList'
 import PropTypes from 'prop-types'
 
+
 const style = {
   container: {
     background: '#263238',
@@ -12,6 +13,11 @@ const style = {
 const ProjectContainer = ({domainData}) => {
   return (
     <div style={style.container}>
+
+const ProjectContainer = ({domainData}) => {
+  return (
+    <div>
+
       <ProjectList projects={domainData.projects}/>
     </div>
   )

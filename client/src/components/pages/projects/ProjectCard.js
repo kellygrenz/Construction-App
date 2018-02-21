@@ -1,5 +1,6 @@
 import React from 'react'
 
+
 import {
   Link
 } from 'react-router-dom'
@@ -63,6 +64,7 @@ const ProjectCard = ({projectName, projectDescription, developer, address, _id})
       <div style={style.actions}>
       <button style={style.button}><Link style={style.link} to={`/project/${_id}`}>View Project</Link></button>
       </div>
+
     </div>
   )
 }

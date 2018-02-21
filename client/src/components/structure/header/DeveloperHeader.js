@@ -18,25 +18,25 @@ const style = {
     textAlign: 'center'
   }
 }
-const AdminHeader = ({domainData}) => {
+const DeveloperHeader = ({domainData}) => {
   return (
     <div style={style.bar}>
       <div>
-        <NavItem to='/admin'>Admin</NavItem>
+        <NavItem to='/developer'>Developer</NavItem>
         <NavItem to='/add-posts'>+ Post</NavItem>
       </div>
       <div style={style.signAndLog}>
         {
-          domainData.loggedOut
+          domainData.developerLoggedOut
             ? <div>
-              <NavItem to='/admin-sign-up'>Sign-Up</NavItem>
-              <NavItem to='/admin-login'>Login</NavItem>
+              <NavItem to='/developer-sign-up'>Sign-Up</NavItem>
+              <NavItem to='/developer-login'>Login</NavItem>
             </div>
             : null
         }
         {
-          domainData.loggedIn
-            ? <button type='button'><HeaderLink onClick={domainData.logoutAdmin}>Logout:{domainData.admin.local.adminEmail}</HeaderLink></button>
+          domainData.developerLoggedIn
+            ? <button type='button'><HeaderLink onClick={domainData.logoutDeveloper}>Logout:{domainData.developer.local.developerEmail}</HeaderLink></button>
             : null
         }
       </div>
@@ -44,8 +44,8 @@ const AdminHeader = ({domainData}) => {
   )
 }
 
-AdminHeader.propTypes = {
+DeveloperHeader.propTypes = {
   domainData: PropTypes.object.isRequired
 }
 
-export default AdminHeader
+export default DeveloperHeader

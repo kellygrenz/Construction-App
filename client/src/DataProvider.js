@@ -1,45 +1,50 @@
 import React, { Component } from 'react'
 import $ from 'jquery'
-import * as UserApi from './lib/userApi'
+import * as DeveloperApi from './lib/developerApi'
 import * as AdminApi from './lib/adminApi'
 import Layout from './components/structure/Layout'
+
+const Wunderground = require('wundergroundnode')
+const myKey = 'c675f48a3374f27d'
+const wunderground = new Wunderground(myKey)
 
 export default class componentName extends Component {
   state = {
     isLoaded: false,
+    posts: [],
     admin: null,
-    posts: null
-    // projects: []
+    developer: null,
+    projects: []
   }
 
   methods = {
-    getAdmins: () => {
+    // getAdmins: () => {
+    //   $.ajax({
+    //     url: '/api/admins',
+    //     method: 'GET'
+    //   }).done((response) => {
+    //     console.log(response, 'get all admin')
+    //     this.setState({admin: response.admin, isLoaded: true})
+    //   })
+    // },
+
+    getWeather: () => {
       $.ajax({
-        url: '/api/admins',
+        url: 'http://api.wunderground.com/api/c675f48a3374f27d/geolookup/q/80013.json',
         method: 'GET'
       }).done((response) => {
-        console.log(response, 'get all admin')
-        this.setState({admin: response.admin, isLoaded: true})
-      })
-    },
-    getWeather: () => { // we need to figure this out
-      $.ajax({
-        url: 'http://api.wunderground.com/api/c675f48a3374f27d/geolookup/q/94107.json',
-        method: 'POST'
-      }).done((response) => {
         console.log(response, 'get weather')
-
         this.setState({post: response.data, isLoaded: true})
-
       })
     },
-    getAllProjects: () => { // not used yet
+
+    getAllProjects: () => {
       $.ajax({
         url: '/api/projects',
         method: 'GET'
       }).done((response) => {
-        console.log(response, 'from getAllProjects()')
-        this.setState({projects: response.projects, isLoaded: true})
+        // console.log(response, 'from getAllProjects()')
+        this.setState({projects: response.data, isLoaded: true})
       })
     },
     getAllPosts: () => {
@@ -47,46 +52,46 @@ export default class componentName extends Component {
         url: '/api/posts',
         method: 'GET'
       }).done((response) => {
-        console.log(response, 'getAllPosts()asdfasdfdfasdffffffff')
+        // console.log(response, 'getAllPosts()asdfasdfdfasdffffffff')
         this.setState({posts: response.data, isLoaded: true})
       })
     },
-    getPost: (id) => {
-      $.ajax({
-        url: `/api/posts/${id}`,
-        method: 'GET'
-      }).done((response) => {
-        console.log(response, 'getPost() clg')
-        // this.setState({})
-      })
-    },
-    // ---------------------------UserApi stuff----------------------------
-    newUser: (user) =>
-      UserApi.signupUser(user)
-        .then(user => {
-          console.log('from newUser', user)
-          this.setState({user})
-          return user
+    // getPost: (id) => {
+    //   $.ajax({
+    //     url: `/api/posts/${id}`,
+    //     method: 'GET'
+    //   }).done((response) => {
+    //     console.log(response, 'getPost() clg')
+    //     // this.setState({})
+    //   })
+    // },
+    // ---------------------------DeveloperApi stuff----------------------------
+    newDeveloper: (developer) =>
+      DeveloperApi.signupDeveloper(developer)
+        .then(developer => {
+          console.log('from newDeveloper', developer)
+          this.setState({developer})
+          return developer
         }),
-    loginUser: (email, password) =>
-      UserApi.loginUser(email, password)
-        .then(user => {
-          console.log('loginUser messsage', user)
-          // this.setState({user})
-          this.methods.getUser(user)
-          return user
+    loginDeveloper: (developerEmail, developerPassword) =>
+      DeveloperApi.loginDeveloper(developerEmail, developerPassword)
+        .then(developer => {
+          console.log('loginDeveloper messsage', developer)
+          // this.setState({developer})
+          this.methods.getDeveloper(developer)
+          return developer
         }),
-    getUser: (user) =>
-      UserApi.getUser(user._id)
-        .then(user => {
-          console.log('from getUser()', user)
-          this.setState({user})
-          return user
+    getDeveloper: (developer) =>
+      DeveloperApi.getDeveloper(developer._id)
+        .then(developer => {
+          console.log('from getDeveloper()', developer)
+          this.setState({developer})
+          return developer
         }),
-    logoutUser: () =>
-      UserApi.logoutUser()
-        .then(user => {
-          this.setState({user: null})
+    logoutDeveloper: () =>
+      DeveloperApi.logoutDeveloper()
+        .then(() => {
+          this.setState({developer: null})
         }),
     // ---------------------------AdminApi stuff----------------------------
     newAdmin: (admin) =>
@@ -113,7 +118,7 @@ export default class componentName extends Component {
         }),
     logoutAdmin: () =>
       AdminApi.logoutAdmin()
-        .then(admin => {
+        .then(() => {
           this.setState({admin: null})
         })
   }
@@ -121,14 +126,24 @@ export default class componentName extends Component {
   componentDidMount () {
     this.methods.getAllProjects()
     this.methods.getAllPosts()
+    fetch('http://api.wunderground.com/api/c675f48a3374f27d/geolookup/q/80013.json')
+      .then(response => {
+        if (response.wunderground) {
+          return response.json()
+        } else {
+          response.json({msg: 'no weather'})
+        }
+      })
   }
 
   render () {
     const domainData = {
       ...this.state,
       ...this.methods,
-      loggedIn: this.state.admin != null,
-      loggedOut: this.state.admin == null
+      loggedIn: this.state.admin != null, // || this.state.developer != null,
+      loggedOut: this.state.admin == null, // || this.state.developer == null
+      developerLoggedIn: this.state.developer != null,
+      developerLoggedOut: this.state.developer == null
     }
     return (
       <div>

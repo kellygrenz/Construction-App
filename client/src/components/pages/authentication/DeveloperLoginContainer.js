@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
 import PropTypes from 'prop-types'
-import AdminLoginForm from './AdminLoginForm'
+import DeveloperLoginForm from './DeveloperLoginForm'
 
-class AdminLoginContainer extends Component {
+class DeveloperLoginContainer extends Component {
   state = {
-    adminEmail: undefined,
-    adminPassword: undefined
+    developerEmail: undefined,
+    developerPassword: undefined
   }
 
   static propTypes = {
@@ -16,10 +16,11 @@ class AdminLoginContainer extends Component {
 
   handleChange = (e) => this.setState({[e.target.id]: e.target.value})
 
-  loginAdmin = (e) => {
+  loginDeveloper = (e) => {
     e.preventDefault()
-    this.props.domainData.loginAdmin(this.state.adminEmail, this.state.adminPassword)
-      .then(() => this.props.history.push('/admin'))
+    // console.log('loginDeveloper message')
+    this.props.domainData.loginDeveloper(this.state.developerEmail, this.state.developerPassword)
+      .then(() => this.props.history.push('/developer'))
       .catch(err => alert(err, Object.keys(err)))
   }
 
@@ -27,13 +28,13 @@ class AdminLoginContainer extends Component {
     return (
       <div>
         <h2>Login</h2>
-        <AdminLoginForm
+        <DeveloperLoginForm
           {...this.state}
           handleChange={this.handleChange}
-          loginAdmin={this.loginAdmin} />
+          loginDeveloper={this.loginDeveloper} />
       </div>
     )
   }
 }
 
-export default withRouter(AdminLoginContainer)
+export default withRouter(DeveloperLoginContainer)

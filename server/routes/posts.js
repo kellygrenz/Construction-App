@@ -3,6 +3,17 @@ const Router = express.Router()
 const Post = require('../models/Post')
 
 Router.route('/')
+  .get((req, res) => {
+    Post.find()
+      .populate('projects')
+      .exec((err, posts) => {
+        if (err) {
+          res.json({ error: err })
+        } else {
+          res.json({ msg: 'SUCCESS', data: posts })
+        }
+      })
+  })
   .post((req, res) => {
     const post = new Post()
     post.setPostData(req.body)
@@ -14,18 +25,6 @@ Router.route('/')
         res.json({msg: 'SUCCESS', data: savedPost})
       }
     })
-  })
-Router.route('/')
-  .get((req, res) => {
-    Post.find()
-      .populate('comments')
-      .exec((err, posts) => {
-        if (err) {
-          res.json({ error: err })
-        } else {
-          res.json({ msg: 'SUCCESS', data: posts })
-        }
-      })
   })
 
 Router.route('/:postId')
@@ -41,8 +40,6 @@ Router.route('/:postId')
         }
       })
   })
-
-Router.route('/:postId')
   .put((req, res) => {
     const postId = req.params.postId
     Post.findById({ _id: postId }, (err, post) => {
@@ -62,8 +59,6 @@ Router.route('/:postId')
       }
     })
   })
-
-Router.route('/:postId')
   .delete((req, res) => {
     const postId = req.params.postId
     Post.remove({ _id: postId }, (err, post) => {

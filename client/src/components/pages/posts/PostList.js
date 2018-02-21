@@ -2,14 +2,12 @@ import React from 'react'
 import PostCard from './PostCard'
 import PropTypes from 'prop-types'
 
-const PostList = ({posts, weather}) => {
+const PostList = ({posts}) => {
   return (
     <div>
       {
-
         posts.map((post, index) => {
           return <PostCard
-            weather={weather}
             {...post}
             key={index} />
         })

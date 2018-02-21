@@ -2,6 +2,7 @@ import React from 'react'
 import ProjectCard from './ProjectCard'
 import PropTypes from 'prop-types'
 
+
 const style = {
   container: {
     
@@ -16,6 +17,7 @@ const style = {
 const ProjectList = ({projects}) => {
   return (
     <div style={style.container}>
+
       {/* <ProjectCard 
         projectName={projectName}
       /> */}

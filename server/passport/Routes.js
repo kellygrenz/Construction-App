@@ -1,4 +1,4 @@
-// const express = require('express')
+const express = require('express')
 const Errors = require('./Errors')
 
 module.exports = (app, passport) => {
@@ -12,7 +12,7 @@ module.exports = (app, passport) => {
         if (!req.body.developerEmail) {
           return next(Errors.missingEmail(info))
         }
-        if (!req.body.password) {
+        if (!req.body.developerPassword) {
           return next(Errors.missingPassword(info))
         }
         return next(Errors.missingCredentials(info))
@@ -23,13 +23,12 @@ module.exports = (app, passport) => {
           return next(err)
         }
         return res.status(200).json({
-          message: 'SIGNUP SUCCESSFUL',
+          message: 'developer SIGNUP SUCCESSFUL',
           data: developer
         })
       })
     })(req, res, next)
   })
-
   app.post('/api/developer-login', (req, res, next) => {
     passport.authenticate('local-developer-login', (err, developer, info) => {
       if (err) {
@@ -58,9 +57,11 @@ module.exports = (app, passport) => {
   })
 
   app.get('/api/get_developer', (req, res) => {
+    console.log(res, 'get_developer');
+    console.log(req, 'get req');
     res.status(200)
       .json({
-        message: req.developer ? 'developer SESSION EXISTS' : 'developer SESSION DOES NOT EXIST',
+        message: req.developer ? 'DEVELOPER SESSION EXISTS' : 'DEVELOPER SESSION DOES NOT EXIST',
         data: req.developer
       })
   })

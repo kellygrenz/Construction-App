@@ -36,7 +36,7 @@ Router.route('/:adminId')
         if (err) {
           res.json({error: err})
         } else {
-          res.json({msg: `Found: ${adminId}`, admin})
+          res.json({msg: `Found: ${adminId}`, data: admin})
         }
       })
   })

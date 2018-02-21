@@ -8,7 +8,6 @@ const style = {
     alignItems: 'center',
     display: 'flex',
     backgroundColor: '#263238',
-    alignItems: 'center',
     marginTop: '50px',
     marginLeft: '30%'
   },
@@ -50,10 +49,9 @@ const style = {
     marginBottom: '20px',
     padding: '15px',
     marginTop: '20px',
-   
+
     border: 'none'
 
-    
   },
   link: {
     textDecoration: 'none'
@@ -69,7 +67,7 @@ const style = {
 
 const AddPostForm = ({title, notes, img, onChangeHandler, submitPostToServer, zip}) => {
   return (
-    
+
     <div style={style.container}>
       <div style={style.headerContainer}><h1 style={style.h1}>Add a New Post</h1></div>
       <div style={style.section}>
