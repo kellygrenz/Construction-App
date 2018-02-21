@@ -10,9 +10,17 @@ const style = {
 }
 
 const ProjectContainer = ({domainData}) => {
+  // console.log('aslkdfalskdjglakjgoaaogjaoigjaogijdogijadfgdfg', domainData.developer.projectPage)
   return (
     <div style={style.container}>
-      <ProjectList projects={domainData.projects}/>
+      {
+        domainData.projectCheck
+          ? <ProjectList
+            projects={domainData.developer.projectPage} // should be using somthing like projectPage
+            removePostFromProject={domainData.removePostFromProject}
+            projectCheck={domainData.projectCheck} />
+          : 'You are not logged in.'
+      }
     </div>
   )
 }

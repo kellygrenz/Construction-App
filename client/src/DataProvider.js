@@ -17,7 +17,8 @@ export default class componentName extends Component {
     projects: [],
     city: null,
     weather: null,
-    test: null
+    test: null,
+    projectCheck: false
 
   }
 
@@ -60,7 +61,7 @@ export default class componentName extends Component {
         url: '/api/posts',
         method: 'GET'
       }).done((response) => {
-        // console.log(response, 'getAllPosts()asdfasdfdfasdffffffff')
+        console.log(response.data, 'getAllPosts()asdfasdfdfasdffffffff')
         this.setState({posts: response.data, isLoaded: true})
       })
     },
@@ -85,14 +86,14 @@ export default class componentName extends Component {
     newDeveloper: (developer) =>
       DeveloperApi.signupDeveloper(developer)
         .then(developer => {
-          console.log('from newDeveloper', developer)
+          // console.log('from newDeveloper', developer)
           this.setState({developer})
           return developer
         }),
     loginDeveloper: (developerEmail, developerPassword) =>
       DeveloperApi.loginDeveloper(developerEmail, developerPassword)
         .then(developer => {
-          console.log('loginDeveloper messsage', developer)
+          // console.log('loginDeveloper messsage', developer)
           // this.setState({developer})
           this.methods.getDeveloper(developer)
           return developer
@@ -100,8 +101,8 @@ export default class componentName extends Component {
     getDeveloper: (developer) =>
       DeveloperApi.getDeveloper(developer._id)
         .then(developer => {
-          console.log('from getDeveloper()', developer)
-          this.setState({developer})
+          // console.log('from getDeveloper()', developer)
+          this.setState({developer, projectCheck: true})
           return developer
         }),
     logoutDeveloper: () =>
@@ -113,14 +114,14 @@ export default class componentName extends Component {
     newAdmin: (admin) =>
       AdminApi.signupAdmin(admin)
         .then(admin => {
-          console.log('from newAdmin', admin)
+          // console.log('from newAdmin', admin)
           this.setState({admin})
           return admin
         }),
     loginAdmin: (adminEmail, adminPassword) =>
       AdminApi.loginAdmin(adminEmail, adminPassword)
         .then(admin => {
-          console.log('loginAdmin messsage', admin)
+          // console.log('loginAdmin messsage', admin)
           // this.setState({admin})
           this.methods.getAdmin(admin)
           return admin
@@ -128,7 +129,7 @@ export default class componentName extends Component {
     getAdmin: (admin) =>
       AdminApi.getAdmin(admin._id)
         .then(admin => {
-          console.log('from getAdmin()', admin)
+          // console.log('from getAdmin()', admin)
           this.setState({admin})
           return admin
         }),
@@ -136,7 +137,37 @@ export default class componentName extends Component {
       AdminApi.logoutAdmin()
         .then(() => {
           this.setState({admin: null})
+        }),
+
+    addPostToProject: (postId) => {
+      if (this.state.developer != null) {
+        $.ajax({
+          url: `/api/developers/projectPage/${this.state.developer._id}`,
+          method: 'PUT',
+          data: {post_id: postId}
+        }).done((response) => {
+          console.log('addPostToProject()you know', response)
+          this.methods.getDeveloper(this.state.developer)
         })
+      } else {
+        alert('You must be logged in to continue')
+      }
+    },
+    removePostFromProject: postId => {
+      if (this.state.developer != null) {
+        $.ajax({
+          url: `/api/developers/removeFromProjectPage/${this.state.developer._id}`,
+          method: 'PUT',
+          data: {post_id: postId}
+        }).then((response) => {
+          this.methods.getDeveloper(this.state.developer)
+        }).catch((error) => {
+          console.log('Could not remove from current project', error)
+        })
+      } else {
+        console.log('You must be logged in')
+      }
+    }
   }
 
   componentDidMount () {
@@ -156,8 +187,8 @@ export default class componentName extends Component {
     const domainData = {
       ...this.state,
       ...this.methods,
-      loggedIn: this.state.admin != null, // || this.state.developer != null,
-      loggedOut: this.state.admin == null, // || this.state.developer == null
+      loggedIn: this.state.admin != null,
+      loggedOut: this.state.admin == null,
       developerLoggedIn: this.state.developer != null,
       developerLoggedOut: this.state.developer == null
     }

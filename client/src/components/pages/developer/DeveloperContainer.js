@@ -1,12 +1,10 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
 
-export class DeveloperContainer extends Component {
+class DeveloperContainer extends Component {
   render () {
     return (
-      <div>
-        
-      </div>
+      <div />
     )
   }
 }

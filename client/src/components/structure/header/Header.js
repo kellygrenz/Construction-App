@@ -29,10 +29,9 @@ const Header = ({domainData}) => {
   return (
     <div style={style.container}>
       <div >
-        <NavItem to='/'><img style={style.headerImg} src='images/logo.png'  /></NavItem>
+        <NavItem to='/'><img style={style.headerImg} src='images/logo.png' /></NavItem>
       </div>
       <div>
-        
         <NavItem to='/admin'>Admin</NavItem>
         {/* <NavItem to='/admin-sign-up'>Sign-up</NavItem> */}
         <NavItem to='/developer'>Developer</NavItem>

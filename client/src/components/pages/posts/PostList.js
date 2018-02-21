@@ -2,8 +2,7 @@ import React from 'react'
 import PostCard from './PostCard'
 import PropTypes from 'prop-types'
 
-const PostList = ({posts, city, weather, deletePost}}) => {
-
+const PostList = ({posts, city, weather, deletePost}) => {
   return (
     <div>
       {
@@ -23,6 +22,7 @@ const PostList = ({posts, city, weather, deletePost}}) => {
 PostList.propTypes = {
   posts: PropTypes.array.isRequired,
   city: PropTypes.object,
+  deletePost: PropTypes.func.isRequired,
   weather: PropTypes.object
 }
 export default PostList

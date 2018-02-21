@@ -22,8 +22,15 @@ const DeveloperHeader = ({domainData}) => {
   return (
     <div style={style.bar}>
       <div>
-        <NavItem to='/developer'>Developer</NavItem>
-        <NavItem to='/add-posts'>+ Post</NavItem>
+        {
+          domainData.developerLoggedIn
+            ? <div>
+              <NavItem to='/developer'>Developer</NavItem>
+              <NavItem to='/add-posts'>+ Post</NavItem>
+              <NavItem to='/projects'>Projects</NavItem>
+            </div>
+            : null
+        }
       </div>
       <div style={style.signAndLog}>
         {
