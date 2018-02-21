@@ -5,9 +5,11 @@ import PropTypes from 'prop-types'
 const PostContainer = ({domainData}) => {
   return (
     <div>
-      <PostList posts={domainData.posts}
-        deletePost={domainData.deletePost}
-      />
+      <PostList
+        posts={domainData.posts}
+        city={domainData.city}
+        weather={domainData.weather}
+        deletePost={domainData.deletePost} />
     </div>
   )
 }
