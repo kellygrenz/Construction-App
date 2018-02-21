@@ -11,13 +11,15 @@ const style = {
   }
 }
 
-const PostCard = ({title, img, notes, zip}) => {
+const PostCard = ({title, img, notes, zip, city, weather}) => {
+  // console.log('from PostCard.js', city)
   return (
     <div style={style.container}>
       {title}
       <img style={style.img} src={img} />
       {notes}
-      {}
+      {city}
+      {weather}
       {zip}
 
     </div>
@@ -27,6 +29,8 @@ PostCard.propTypes = {
   title: PropTypes.string.isRequired,
   img: PropTypes.string.isRequired,
   notes: PropTypes.string.isRequired,
-  zip: PropTypes.number.isRequired
+  zip: PropTypes.number.isRequired,
+  city: PropTypes.object,
+  weather: PropTypes.object
 }
 export default PostCard

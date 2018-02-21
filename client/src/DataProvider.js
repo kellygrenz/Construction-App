@@ -14,7 +14,11 @@ export default class componentName extends Component {
     posts: [],
     admin: null,
     developer: null,
-    projects: []
+    projects: [],
+    city: null,
+    weather: null,
+    test: null
+
   }
 
   methods = {
@@ -28,13 +32,17 @@ export default class componentName extends Component {
     //   })
     // },
 
-    getWeather: () => {
+    getWeather: (zip) => {
       $.ajax({
-        url: 'http://api.wunderground.com/api/c675f48a3374f27d/geolookup/q/80013.json',
+        url: `http://api.wunderground.com/api/c675f48a3374f27d/geolookup/conditions/q/${zip}.json`,
         method: 'GET'
       }).done((response) => {
-        console.log(response, 'get weather')
-        this.setState({post: response.data, isLoaded: true})
+        // console.log('found city!!!!!!!!!!!!!', response.location.city)
+        console.log('found weather', response.current_observation.weather)
+        // console.log('wunderground', wunderground.conditions.request(weather))
+        // console.log('find me', weather)
+        this.setState({city: response.location.city, weather: response.current_observation.weather, isLoaded: true})
+        // return response
       })
     },
 
