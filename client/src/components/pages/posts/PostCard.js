@@ -17,7 +17,7 @@ const PostCard = ({title, img, notes, zip}) => {
       {title}
       <img style={style.img} src={img} />
       {notes}
-      {/* {current_observation.icon} */}
+      {}
       {zip}
 
     </div>
