@@ -22,8 +22,8 @@ class AddPostContainer extends Component {
   submitPostToServer = (e) => {
     e.preventDefault()
     const {title, notes, img, zip} = this.state
-    const newPost = {title, notes, img, zip}
-    newPost.test = this.props.domainData.getWeather(zip)
+    const weatherPost = this.props.domainData.getWeather(zip)
+    const newPost = {title, notes, img, zip, weatherPost}
     // console.log('This is the weather we are looking for', weather)
     // console.log(zip, 'OVER')
     console.log(newPost, 'HERE')
