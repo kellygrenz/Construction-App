@@ -2,9 +2,24 @@ import React from 'react'
 import PostCard from './PostCard'
 import PropTypes from 'prop-types'
 
+<<<<<<< Updated upstream
 const PostList = ({posts, weather}) => {
+=======
+const style = {
+  container: {
+
+    display: 'flex',
+    width: '80vw',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    flexWrap: 'wrap'
+  }
+}
+
+const PostList = ({posts, city, weather, deletePost}) => {
+>>>>>>> Stashed changes
   return (
-    <div>
+    <div style={style.container}>
       {
 
         posts.map((post, index) => {

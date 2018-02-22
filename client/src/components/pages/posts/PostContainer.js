@@ -2,10 +2,26 @@ import React from 'react'
 import PostList from './PostList'
 import PropTypes from 'prop-types'
 
+const style = {
+  container: {
+    background: '#263238',
+    padding: '10%'
+  }
+}
+
 const PostContainer = ({domainData}) => {
   return (
+<<<<<<< Updated upstream
     <div>
       <PostList weather={domainData.weather} posts={domainData.posts} />
+=======
+    <div style={style.container} >
+      <PostList
+        posts={domainData.posts}
+        city={domainData.city}
+        weather={domainData.weather}
+        deletePost={domainData.deletePost} />
+>>>>>>> Stashed changes
     </div>
   )
 }
