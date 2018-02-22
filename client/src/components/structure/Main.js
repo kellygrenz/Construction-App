@@ -17,7 +17,7 @@ const Main = ({domainData}) => {
   return (
     <Switch>
       <Route path='/about' component={About} />
-      <Route path='/projects' render={() => <ProjectContainer domainData={domainData}/>} />
+      <Route path='/projects' render={() => <ProjectContainer domainData={domainData} />} />
       <Route path='/admin-sign-up' render={() => <AdminSignUpContainer domainData={domainData} />} />
       <Route path='/admin-login' render={() => <AdminLoginContainer domainData={domainData} />} />
       <Route path='/admin' render={() => <Admin domainData={domainData} />} />{/* I'm admin's home and empty */}

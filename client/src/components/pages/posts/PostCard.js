@@ -31,7 +31,9 @@ PostCard.propTypes = {
   title: PropTypes.string.isRequired,
   img: PropTypes.string.isRequired,
   notes: PropTypes.string.isRequired,
-  zip: PropTypes.number.isRequired,
+  deletePost: PropTypes.func.isRequired,
+  _id: PropTypes.string.isRequired,
+  zip: PropTypes.number,
   city: PropTypes.object,
   weather: PropTypes.object
 }

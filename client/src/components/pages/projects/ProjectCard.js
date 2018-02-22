@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 import {
   Link
@@ -17,7 +18,7 @@ const style = {
     border: '10px solid white',
     background: '#ebebeb',
     padding: '15px'
-    
+
   },
   cardContent: {
     display: 'flex',
@@ -35,7 +36,7 @@ const style = {
   },
   button: {
     display: 'flex',
-    
+
     marginTop: '50px',
     background: '#f27935',
     color: '#fff',
@@ -46,25 +47,30 @@ const style = {
     fontSize: '18px',
     color: '#fff',
     fontFamily: 'Oswald, sans-serif'
-  },
+  }
 }
 
-const ProjectCard = ({projectName, projectDescription, developer, address, _id}) => {
-  
+const ProjectCard = ({project, removePostFromProject}) => {
   return (
     <div style={style.container}>
       <div style={style.cardContent}>
-        <h1 style={style.name}>{projectName}</h1>
-        <p>{projectDescription}</p>
-        <h3>Developer: {developer}</h3>
-        <h4>Address: {address}</h4>
+        <h1 style={style.name}>{project.projectName}</h1>
+        <p>{project.projectDescription}</p>
+        <h3>Developer: {project.developer}</h3>
+        <h4>Address: {project.address}</h4>
       </div>
-
+      <div>POSTS stuff:
+        <br />Title: {project.title}<br />Zip: {project.zip}<br />Notes: {project.notes}
+      </div>
       <div style={style.actions}>
-      <button style={style.button}><Link style={style.link} to={`/project/${_id}`}>View Project</Link></button>
+        <button style={style.button}><Link style={style.link} to={`/project/${project._id}`}>View Project</Link></button>
       </div>
     </div>
   )
 }
 
+ProjectCard.propTypes = {
+  project: PropTypes.array.isRequired,
+  removePostFromProject: PropTypes.func.isRequired
+}
 export default ProjectCard
