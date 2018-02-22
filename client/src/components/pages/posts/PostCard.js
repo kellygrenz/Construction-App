@@ -15,7 +15,6 @@ const style = {
     border: '10px solid white',
     background: '#ebebeb',
     padding: '15px'
-
   },
   cardContent: {
     display: 'flex',
@@ -28,7 +27,9 @@ const style = {
   },
   img: {
     display: 'flex',
-    maxWidth: '200px'
+    maxWidth: '200px',
+    maxHeight: '10%',
+    border: '10px solid red'
   },
   actions: {
     display: 'flex',
@@ -49,25 +50,12 @@ const style = {
     fontSize: '18px',
     color: '#fff',
     fontFamily: 'Oswald, sans-serif'
-  },
-  img: {
-    width: '20%',
-    height: '20%'
-
   }
 }
 
 const PostCard = ({title, img, notes, zip, city, weather, deletePost, _id}) => {
   return (
     <div style={style.container}>
-
-      {title}
-      <img style={style.img} src={img} />
-      {notes}
-      {city}
-      {weather}
-      {zip}
-
       <div style={style.cardContent}>
         <h1 style={style.name}> {title}</h1>
         <img style={style.img} src={img} />
@@ -78,10 +66,6 @@ const PostCard = ({title, img, notes, zip, city, weather, deletePost, _id}) => {
       </div>
       <div>
         <button style={style.button} type='button' onClick={() => deletePost(_id)}>Delete Post</button>
-      </div>
-
-      <div>
-        <button type='button' onClick={() => deletePost(_id)}>Delete Post</button>
       </div>
     </div>
   )

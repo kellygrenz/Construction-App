@@ -11,17 +11,12 @@ const style = {
 
 const PostContainer = ({domainData}) => {
   return (
-
-      <PostList weather={domainData.weather} posts={domainData.posts} />
-
     <div style={style.container} >
-
       <PostList
         posts={domainData.posts}
         city={domainData.city}
         weather={domainData.weather}
         deletePost={domainData.deletePost} />
-
     </div>
   )
 }
