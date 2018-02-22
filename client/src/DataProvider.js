@@ -19,7 +19,6 @@ export default class componentName extends Component {
     weather: null,
     test: null,
     projectCheck: false
-
   }
 
   methods = {
@@ -43,7 +42,6 @@ export default class componentName extends Component {
         // console.log('wunderground', wunderground.conditions.request(weather))
         // console.log('find me', weather)
         this.setState({city: response.location.city, weather: response.current_observation.weather, isLoaded: true})
-        // return response
       })
     },
 
