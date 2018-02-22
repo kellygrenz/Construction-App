@@ -7,12 +7,13 @@ const style = {
     display: 'flex',
     background: '#fff',
     justifyContent: 'flex-start',
-    padding: '20px',
+    padding: '10px',
     borderBottom: '1px dashed #f26522'
 
   },
   headerImg: {
-
+    width: '200px',
+    height: '83px',
     marginRight: '250px'
 
   },
@@ -27,11 +28,10 @@ const style = {
 const Header = ({domainData}) => {
   return (
     <div style={style.container}>
-      <div style={style.headerImg}>
-        <NavItem  to='/'><img src='images/logo.png'  /></NavItem>
+      <div >
+        <NavItem to='/'><img style={style.headerImg} src='images/logo.png' /></NavItem>
       </div>
       <div>
-        
         <NavItem to='/admin'>Admin</NavItem>
         {/* <NavItem to='/admin-sign-up'>Sign-up</NavItem> */}
         <NavItem to='/developer'>Developer</NavItem>

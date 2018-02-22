@@ -23,8 +23,6 @@ Admin.methods.setAdminData = function (requestBody) {
   this.adminEmail = requestBody.adminEmail || this.adminEmail
 
   // this.adminProject = requestBody.adminProject || this.adminProject
-
-
 }
 
 Admin.methods.setDate = function () {

@@ -10,7 +10,7 @@ const style = {
   link: {
     textDecoration: 'none',
     display: 'flex',
-    width: 75,
+    width: '75',
     color: '#333',
     fontSize: '20px',
     padding: '20px',
@@ -18,17 +18,18 @@ const style = {
   }
 }
 
-const NavItem = ({to, children}) => {
+const NavItem = ({to, children, exact}) => {
   return (
     <div style={style.container}>
-      <NavLink style={style.link} to={to}>{children}</NavLink>
+      <NavLink style={style.link} exact={exact} to={to}>{children}</NavLink>
     </div>
   )
 }
 
 NavItem.propTypes = {
   to: PropTypes.string.isRequired,
-  children: PropTypes.string.isRequired
+  children: PropTypes.string,
+  exact: PropTypes.bool.isRequired
 }
 
 NavItem.defaultProps = {exact: false}

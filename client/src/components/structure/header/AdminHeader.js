@@ -1,6 +1,7 @@
 import React from 'react'
 import NavItem from './NavItem'
 import PropTypes from 'prop-types'
+import HeaderLink from './HeaderLink'
 
 const style = {
   bar: {
@@ -25,8 +26,19 @@ const AdminHeader = ({domainData}) => {
         <NavItem to='/add-posts'>+ Post</NavItem>
       </div>
       <div style={style.signAndLog}>
-        <NavItem to='/admin-sign-up'>Sign-Up</NavItem>
-        <NavItem to='/admin-login'>Login</NavItem>
+        {
+          domainData.loggedOut
+            ? <div>
+              <NavItem to='/admin-sign-up'>Sign-Up</NavItem>
+              <NavItem to='/admin-login'>Login</NavItem>
+            </div>
+            : null
+        }
+        {
+          domainData.loggedIn
+            ? <button type='button'><HeaderLink onClick={domainData.logoutAdmin}>Logout:{domainData.admin.local.adminEmail}</HeaderLink></button>
+            : null
+        }
       </div>
     </div>
   )

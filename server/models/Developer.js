@@ -2,14 +2,15 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 const Developer = new Schema({
-  
   local: {
     developerFirstName: { type: String, required: true },
     developerLastName: {type: String, required: true},
     developerEmail: {type: String, required: true},
     developerPassword: {type: String, required: true}
   },
-  created: {type: Date, default: Date.now}
+  created: {type: Date, default: Date.now},
+  projectPage: [{type: Schema.Types.ObjectId, ref: 'Post'}],
+  projects: [{type: Schema.Types.ObjectId, ref: 'Project'}]
 })
 
 Developer.methods.setDeveloperData = function (requestBody) {

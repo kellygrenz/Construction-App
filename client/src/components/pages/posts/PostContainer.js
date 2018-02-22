@@ -11,17 +11,17 @@ const style = {
 
 const PostContainer = ({domainData}) => {
   return (
-<<<<<<< Updated upstream
-    <div>
+
       <PostList weather={domainData.weather} posts={domainData.posts} />
-=======
+
     <div style={style.container} >
+
       <PostList
         posts={domainData.posts}
         city={domainData.city}
         weather={domainData.weather}
         deletePost={domainData.deletePost} />
->>>>>>> Stashed changes
+
     </div>
   )
 }

@@ -29,7 +29,11 @@ class AddPostContainer extends Component {
   submitPostToServer = (e) => {
     e.preventDefault()
     const {title, notes, img, zip} = this.state
-    const newPost = {title, notes, img, zip}
+    const weatherPost = this.props.domainData.getWeather(zip)
+    const newPost = {title, notes, img, zip, weatherPost}
+    // console.log('This is the weather we are looking for', weather)
+    // console.log(zip, 'OVER')
+    console.log(newPost, 'HERE')
     $.ajax({
       url: '/api/posts',
       method: 'POST',
@@ -37,8 +41,7 @@ class AddPostContainer extends Component {
     }).done((response) => {
       console.log(response, 'submitPostToServer()')
       this.props.domainData.getAllPosts()
-      this.props.domainData.getWeather()
-      this.props.history.push('/posts')
+      this.props.history.push('/posts') // propbably needs a ? : when logged in
     })
   }
   render () {

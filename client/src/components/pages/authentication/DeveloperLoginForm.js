@@ -30,7 +30,7 @@ const style = {
   }
 }
 
-const LoginForm = ({id, handleChange, onSubmit}) => {
+const DeveloperLoginForm = ({id, handleChange, loginDeveloper}) => {
   return (
     <form style={style.container}>
       <div style={style.card}>
@@ -38,26 +38,26 @@ const LoginForm = ({id, handleChange, onSubmit}) => {
           <h3>
             Email:
           </h3>
-          <input style={style.inputField} type='text' onChange={handleChange} placeholder='Email' id='email' />
+          <input style={style.inputField} type='text' onChange={handleChange} placeholder='Email' id='developerEmail' />
         </card>
         <card>
           <h3>
             Password:
           </h3>
-          <input style={style.inputField} type='text' onChange={handleChange} id='password' placeholder='password' />
+          <input style={style.inputField} type='text' onChange={handleChange} id='developerPassword' placeholder='password' />
         </card>
       </div>
       <div style={style.button}>
-        <button raised onClick={onSubmit}>Login</button>
-        <button style={style.butlin} raised><Link style={style.link} to='/sign-up'>Sign up</Link></button>
+        <button raised onClick={loginDeveloper}>Login</button>
+        <button style={style.butlin} raised><Link style={style.link} to='/developer-sign-up'>Sign up</Link></button>
       </div>
     </form>
   )
 }
 
-LoginForm.propTypes = {
+DeveloperLoginForm.propTypes = {
   id: PropTypes.object,
   handleChange: PropTypes.func.isRequired,
-  onSubmit: PropTypes.func.isRequired
+  loginDeveloper: PropTypes.func.isRequired
 }
-export default LoginForm
+export default DeveloperLoginForm

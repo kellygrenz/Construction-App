@@ -19,10 +19,10 @@ const generateHash = (clearPassword) =>
 
 module.exports = (passport) => {
   passport.serializeUser(
-    (developer, done) => done(null, developer._id)
+    (admin, developer, done) => done(null, developer._id, admin._id)
   )
 
-  passport.deserializeUser(Developer.findById.bind(Developer))
+  passport.deserializeUser(Developer.findById.bind(Developer), Admin.findById(Admin))
 
   passport.use('local-developer-signup', new LocalStrategy({
     ...localStrategyConfig,
@@ -57,7 +57,7 @@ module.exports = (passport) => {
   }))
 
   passport.use('local-developer-login', new LocalStrategy(localStrategyConfig, (developerEmail, developerPassword, done) => {
-    Developer.findOne({'local.developerEmail': email}, (err, developer) => {
+    Developer.findOne({'local.developerEmail': developerEmail}, (err, developer) => {
       if (err) {
         return done(err)
       }
@@ -80,10 +80,10 @@ module.exports = (passport) => {
     passwordField: 'adminPassword',
     failureFlash: true
   }
-  passport.serializeUser(
-    (admin, done) => done(null, admin._id)
-  )
-  passport.deserializeUser(Admin.findById.bind(Admin))
+  // passport.serializeUser(
+  //   (admin, done) => done(null, admin._id)
+  // )
+  // passport.deserializeUser(Admin.findById.bind(Admin))
 
   passport.use('local-admin-signup', new LocalStrategy({
     ...localStrategyConfi,

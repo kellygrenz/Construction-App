@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 
 const style = {
   container: {
-    
+
     display: 'flex',
     width: '80vw',
     justifyContent: 'space-between',
@@ -13,25 +13,26 @@ const style = {
   }
 }
 
-const ProjectList = ({projects}) => {
+const ProjectList = ({projects, removePostFromProject, projectCheck}) => {
   return (
     <div style={style.container}>
-      {/* <ProjectCard 
-        projectName={projectName}
-      /> */}
       {
-        projects.map((project, index ) => {
-          return <ProjectCard
-            {...project}
-            key={index} />
-        })
+        projectCheck
+          ? projects.map(project => {
+            return <ProjectCard
+              project={project}
+              removePostFromProject={removePostFromProject} />
+          })
+          : 'Project is empty'
       }
     </div>
   )
 }
 
 ProjectList.propTypes = {
-  projects: PropTypes.array.isRequired
+  projects: PropTypes.array.isRequired,
+  removePostFromProject: PropTypes.func.isRequired,
+  projectCheck: PropTypes.bool.isRequired
 }
 
 export default ProjectList

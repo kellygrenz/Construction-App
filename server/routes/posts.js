@@ -3,6 +3,15 @@ const Router = express.Router()
 const Post = require('../models/Post')
 
 Router.route('/')
+  .get((req, res) => {
+    Post.find((err, posts) => {
+      if (err) {
+        res.json({ error: err })
+      } else {
+        res.json({ msg: 'SUCCESS', data: posts })
+      }
+    })
+  })
   .post((req, res) => {
     const post = new Post()
     post.setPostData(req.body)
@@ -15,43 +24,25 @@ Router.route('/')
       }
     })
   })
-Router.route('/')
-  .get((req, res) => {
-    Post.find()
-      .populate('comments')
-      .exec((err, posts) => {
-        if (err) {
-          res.json({ error: err })
-        } else {
-          res.json({ msg: 'SUCCESS', data: posts })
-        }
-      })
-  })
 
 Router.route('/:postId')
   .get((req, res) => {
     const postId = req.params.postId
-    Post.findById({ _id: postId })
-      .populate('comments')
-      .exec((err, post) => {
-        if (err) {
-          res.json({ error: err })
-        } else {
-          res.json({ msg: `FOUND: ${postId}`, data: post })
-        }
-      })
+    Post.findById({ _id: postId }, (err, post) => {
+      if (err) {
+        res.json({ error: err })
+      } else {
+        res.json({ msg: `FOUND: ${postId}`, data: post })
+      }
+    })
   })
-
-Router.route('/:postId')
   .put((req, res) => {
     const postId = req.params.postId
     Post.findById({ _id: postId }, (err, post) => {
       if (err) {
         res.json({ error: err })
       } else {
-        post.img = req.body.img ? req.body.img : post.img
-        post.title = req.body.title ? req.body.title : post.title
-        post.notes = req.body.notes ? req.body.notes : post.notes
+        post.setProductData(req.body)
         post.save((err, updatedPost) => {
           if (err) {
             res.json({ error: err })
@@ -62,15 +53,13 @@ Router.route('/:postId')
       }
     })
   })
-
-Router.route('/:postId')
   .delete((req, res) => {
-    const postId = req.params.postId
-    Post.remove({ _id: postId }, (err, post) => {
+    const deletePost = req.params.postId
+    Post.remove({ _id: deletePost }, (err, post) => {
       if (err) {
         res.json({ error: err })
       } else {
-        res.json({ msg: `DELETED: ${postId}`, data: post })
+        res.json({ msg: `DELETED: ${deletePost}`, data: post })
       }
     })
   })

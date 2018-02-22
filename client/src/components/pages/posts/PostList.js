@@ -2,9 +2,7 @@ import React from 'react'
 import PostCard from './PostCard'
 import PropTypes from 'prop-types'
 
-<<<<<<< Updated upstream
-const PostList = ({posts, weather}) => {
-=======
+
 const style = {
   container: {
 
@@ -17,24 +15,27 @@ const style = {
 }
 
 const PostList = ({posts, city, weather, deletePost}) => {
->>>>>>> Stashed changes
+
   return (
     <div style={style.container}>
       {
-
         posts.map((post, index) => {
           return <PostCard
-            weather={weather}
             {...post}
-            key={index} />
+            city={city}
+            weather={weather}
+            key={index}
+            deletePost={deletePost} />
         })
       }
-
     </div>
   )
 }
 
 PostList.propTypes = {
-  posts: PropTypes.array.isRequired
+  posts: PropTypes.array.isRequired,
+  city: PropTypes.object,
+  deletePost: PropTypes.func.isRequired,
+  weather: PropTypes.object
 }
 export default PostList
