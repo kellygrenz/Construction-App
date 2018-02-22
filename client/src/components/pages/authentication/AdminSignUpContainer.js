@@ -3,6 +3,13 @@ import { withRouter } from 'react-router-dom'
 import AdminSignUpForm from './AdminSignUpForm'
 import PropTypes from 'prop-types'
 
+const style = {
+  container: {
+    background: '#263238',
+    padding: '10%'
+  }
+}
+
 class AdminSignUpContainer extends Component {
   state = {
     adminFirstName: undefined,
@@ -26,8 +33,8 @@ class AdminSignUpContainer extends Component {
 
   render () {
     return (
-      <div>
-        <h2>Sign up</h2>
+      <div style={style.container}>
+        
         <AdminSignUpForm
           {...this.state}
           onChangeHandler={this.onChangeHandler}

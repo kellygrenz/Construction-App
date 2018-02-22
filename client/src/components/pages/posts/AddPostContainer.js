@@ -4,6 +4,13 @@ import { withRouter } from 'react-router-dom'
 import $ from 'jquery'
 import AddPostForm from './AddPostForm'
 
+const style = {
+  container: {
+    background: '#263238',
+    padding: '10%'
+  }
+}
+
 class AddPostContainer extends Component {
   state = {
     title: undefined,
@@ -39,7 +46,7 @@ class AddPostContainer extends Component {
   }
   render () {
     return (
-      <div>
+      <div style={style.container}>
         <AddPostForm
           {...this.state}
           submitPostToServer={this.submitPostToServer}

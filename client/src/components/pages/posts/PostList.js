@@ -2,9 +2,22 @@ import React from 'react'
 import PostCard from './PostCard'
 import PropTypes from 'prop-types'
 
+
+const style = {
+  container: {
+
+    display: 'flex',
+    width: '80vw',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    flexWrap: 'wrap'
+  }
+}
+
 const PostList = ({posts, city, weather, deletePost}) => {
+
   return (
-    <div>
+    <div style={style.container}>
       {
         posts.map((post, index) => {
           return <PostCard
